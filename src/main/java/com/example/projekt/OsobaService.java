@@ -2,101 +2,91 @@ package com.example.projekt;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class OsobaService {
+    private final OsobaRepository osobaRepository;
 
-    private List<Osoba> osoby;
-
-    public OsobaService(){
-        this.osoby = init();
+    public OsobaService(OsobaRepository osobaRepository){
+        this.osobaRepository = osobaRepository;
     }
 
-    public List<Osoba> init(){
-        List<Osoba> osoby = new ArrayList<>();
-        Osoba osoba1 = new Osoba();
-        osoba1.setId(1);
-        osoba1.setMeno("Michal");
-        osoba1.setPriezvisko("Obor");
-        osoba1.setRok_Nar("2005");
-        osoba1.setRod_Cislo("012345/6789");
-        osoba1.setTel_cislo("+421987654321");
-        osoba1.setBydlisko("Brezno");
-        osoba1.setPohlavie("Muž");
-        osoby.add(osoba1);
+    private static Osoba mapOsoba(OsobaEntity osobaEntity){
+        Osoba osoba = new Osoba();
 
-        Osoba osoba2 = new Osoba();
-        osoba2.setId(2);
-        osoba2.setMeno("Petra");
-        osoba2.setPriezvisko("Nová");
-        osoba2.setRok_Nar("1978");
-        osoba2.setRod_Cislo("987654/3210");
-        osoba2.setTel_cislo("+421123456789");
-        osoba2.setBydlisko("Košice");
-        osoba2.setPohlavie("Žena");
-        osoby.add(osoba2);
-        return osoby;
+        osoba.setId(osobaEntity.getId());
+        osoba.setMeno(osobaEntity.getMeno());
+        osoba.setPriezvisko(osobaEntity.getPriezvisko());
+        osoba.setRok_nar(osobaEntity.getRok_nar());
+        osoba.setRod_cislo(osobaEntity.getRod_cislo());
+        osoba.setBydlisko(osobaEntity.getBydlisko());
+        osoba.setPohlavie(osobaEntity.getPohlavie());
+        osoba.setTel_cislo(osobaEntity.getTel_cislo());
+        return osoba;
     }
 
-
-    public List<Osoba> getOsobaByPriezvisko(String priezvisko){
-        if (priezvisko == null){
-            return this.osoby;
+    @Transactional
+    public List<Osoba> getOsobaByPriezvisko() {
+        List<Osoba> ret = new LinkedList<>();
+        for (OsobaEntity o1 : osobaRepository.findAll()){
+            Osoba o2 = mapOsoba(o1);
+            ret.add(o2);
         }
+        return ret;
+    }
 
-        List<Osoba> filteredOsoby = new ArrayList<>();
+    @Transactional
+    public int createOsoba(Osoba osoba){
+        OsobaEntity osobaEntity = new OsobaEntity();
 
-        for (Osoba osoba : osoby){
-            if (osoba.getPriezvisko().equals(priezvisko)){
-                filteredOsoby.add(osoba);
+        osobaEntity.setMeno(osoba.getMeno());
+        osobaEntity.setPriezvisko(osoba.getPriezvisko());
+        osobaEntity.setRok_nar(osoba.getRok_nar());
+        osobaEntity.setRod_cislo(osoba.getRod_cislo());
+        osobaEntity.setBydlisko(osoba.getBydlisko());
+        osobaEntity.setPohlavie(osoba.getPohlavie());
+        osobaEntity.setTel_cislo(osoba.getTel_cislo());
+
+        this.osobaRepository.save(osobaEntity);
+        return osobaEntity.getId();
+    }
+    @Transactional
+    public Osoba getOsobaById(int id){
+        for (OsobaEntity o1 : osobaRepository.findAll()){
+            if (o1.getId() == (id)){
+                Osoba o2 = mapOsoba(o1);
+                return o2;
             }
         }
-
-        return filteredOsoby;
+        return null;
     }
 
-
-    public List<Osoba> getOsobaById(int id){
-        if (id == 0){
-            return this.osoby;
-        }
-
-        List<Osoba> filteredOsoby = new ArrayList<>();
-
-        for (Osoba osoba : osoby){
-            if (osoba.getId()==(id)){
-                filteredOsoby.add(osoba);
-            }
-        }
-
-        return filteredOsoby;
-    }
-
-
-    public List<Osoba> createOsoba(Osoba osoba){
-        this.osoby.add(osoba);
-
-        return osoby;
-    }
-
-
-    public List<Osoba> updateOsoba(int id, Osoba osoba){
-        this.osoby.get(id).setId(osoba.getId());
-        this.osoby.get(id).setMeno(osoba.getMeno());
-        this.osoby.get(id).setPriezvisko(osoba.getPriezvisko());
-        this.osoby.get(id).setRok_Nar(osoba.getRok_Nar());
-        this.osoby.get(id).setRod_Cislo(osoba.getRod_Cislo());
-        this.osoby.get(id).setTel_cislo(osoba.getTel_cislo());
-        this.osoby.get(id).setBydlisko(osoba.getBydlisko());
-        this.osoby.get(id).setPohlavie(osoba.getPohlavie());
-
-        return osoby;
-    }
-
-
+    @Transactional
     public void deleteOsoba(int id){
-        this.osoby.remove(this.osoby.get(id));
+        Optional<OsobaEntity> byId = osobaRepository.findById(id);
+        if (byId.isPresent()){
+            osobaRepository.delete(byId.get());
+        }
+    }
+
+    @Transactional
+    public void updateOsoba(int id, Osoba osoba){
+        Optional<OsobaEntity> byId = osobaRepository.findById(id);
+        if (byId.isPresent()){
+            byId.get().setId(osoba.getId());
+            byId.get().setMeno(osoba.getMeno());
+            byId.get().setPriezvisko(osoba.getPriezvisko());
+            byId.get().setRok_nar(osoba.getRok_nar());
+            byId.get().setRod_cislo(osoba.getRod_cislo());
+            byId.get().setBydlisko(osoba.getBydlisko());
+            byId.get().setBydlisko(osoba.getBydlisko());
+            byId.get().setPohlavie(osoba.getPohlavie());
+            byId.get().setTel_cislo(osoba.getTel_cislo());
+        }
     }
 
 

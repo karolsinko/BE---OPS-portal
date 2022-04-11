@@ -5,8 +5,6 @@ import java.util.List;
 
 @RestController
 public class VakcinaController {
-    private List<Vakcina> vakciny;
-
     private VakcinaService vakcinaService;
 
     public VakcinaController(VakcinaService vakcinaService){
@@ -19,24 +17,24 @@ public class VakcinaController {
     }
 
     @GetMapping("/api/vakcina/{id}")
-    public List<Vakcina> getVakcinaById(@RequestParam(required = false) int id){
+    public Vakcina getVakcinaById(@PathVariable int id){
         return vakcinaService.getVakcinaById(id);
     }
 
 
-    @PostMapping("/api/vakcina") //create new book
-    public List<Vakcina> createVakcina(@RequestBody Vakcina vakcina){
+    @PostMapping("/api/vakcina")
+    public int createVakcina(@PathVariable Vakcina vakcina){
         return vakcinaService.createVakcina(vakcina);
     }
 
     @DeleteMapping("/api/vakcina/{id}")
     public void deleteVakcina(@PathVariable int id){
-        this.vakcinaService.deleteVakcina(id);
+        vakcinaService.deleteVakcina(id);
     }
 
     @PutMapping("/api/vakcina/{id}") //update by {book}
-    public List<Vakcina> updateVakcina(@PathVariable int id, @RequestBody Vakcina vakcina){
-        return this.vakcinaService.updateVakcina(id, vakcina);
+    public void updateVakcina(@PathVariable int id, @RequestBody Vakcina vakcina){
+        vakcinaService.updateVakcina(id, vakcina);
     }
 }
 

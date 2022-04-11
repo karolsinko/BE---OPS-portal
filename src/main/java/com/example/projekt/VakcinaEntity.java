@@ -6,38 +6,33 @@ import javax.persistence.Id;
 
 @Entity
 public class VakcinaEntity {
-
-    public String getNazov() {
-        return nazov;
-    }
-
-    public int getPocet_davok() {
-        return pocet_davok;
-    }
+    @Id
+    @GeneratedValue
+    private int id;
+    private String nazov;
+    private int pocet_davok;
 
     public int getId() {
         return id;
-    }
-
-
-
-    public void setNazov(String nazov) {
-        this.nazov = nazov;
-    }
-
-    public void setPocet_davok(int pocet_davok) {
-        this.pocet_davok = pocet_davok;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    public String getNazov() {
+        return nazov;
+    }
 
-    @Id
-    @GeneratedValue
-    private String nazov;
-    private int pocet_davok;
-    private int id;
+    public void setNazov(String nazov) {
+        this.nazov = nazov;
+    }
 
+    public int getPocet_davok() {
+        return pocet_davok;
+    }
+
+    public void setPocet_davok(int pocet_davok) {
+        this.pocet_davok = pocet_davok;
+    }
 }
