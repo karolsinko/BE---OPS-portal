@@ -1,5 +1,8 @@
-package com.example.projekt;
+package com.example.projekt.Osoba;
 
+import com.example.projekt.Osoba.Osoba;
+import com.example.projekt.Osoba.OsobaEntity;
+import com.example.projekt.Osoba.OsobaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -9,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class OsobaService {
+
     private final OsobaRepository osobaRepository;
 
     public OsobaService(OsobaRepository osobaRepository){
@@ -27,10 +31,11 @@ public class OsobaService {
         osoba.setPohlavie(osobaEntity.getPohlavie());
         osoba.setTel_cislo(osobaEntity.getTel_cislo());
         return osoba;
+
     }
 
     @Transactional
-    public List<Osoba> getOsobaByPriezvisko() {
+    public List<Osoba> getOsobaByMeno() {
         List<Osoba> ret = new LinkedList<>();
         for (OsobaEntity o1 : osobaRepository.findAll()){
             Osoba o2 = mapOsoba(o1);
@@ -54,6 +59,7 @@ public class OsobaService {
         this.osobaRepository.save(osobaEntity);
         return osobaEntity.getId();
     }
+
     @Transactional
     public Osoba getOsobaById(int id){
         for (OsobaEntity o1 : osobaRepository.findAll()){
@@ -77,7 +83,6 @@ public class OsobaService {
     public void updateOsoba(int id, Osoba osoba){
         Optional<OsobaEntity> byId = osobaRepository.findById(id);
         if (byId.isPresent()){
-            byId.get().setId(osoba.getId());
             byId.get().setMeno(osoba.getMeno());
             byId.get().setPriezvisko(osoba.getPriezvisko());
             byId.get().setRok_nar(osoba.getRok_nar());
@@ -88,6 +93,4 @@ public class OsobaService {
             byId.get().setTel_cislo(osoba.getTel_cislo());
         }
     }
-
-
 }

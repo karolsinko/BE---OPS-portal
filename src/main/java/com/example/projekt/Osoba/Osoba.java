@@ -1,21 +1,15 @@
-package com.example.projekt;
+package com.example.projekt.Osoba;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-public class OsobaEntity {
-    @Id
-    @GeneratedValue
+public class Osoba {
     private int id;
     private String meno;
     private String priezvisko;
     private String rok_nar;
     private String rod_cislo;
+    private String tel_cislo;
     private String bydlisko;
     private String pohlavie;
-    private String tel_cislo;
+
 
     public int getId() {
         return id;
@@ -81,3 +75,5 @@ public class OsobaEntity {
         this.tel_cislo = tel_cislo;
     }
 }
+
+

@@ -1,10 +1,11 @@
-package com.example.projekt;
+package com.example.projekt.Vakcina;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 public class VakcinaController {
+
     private VakcinaService vakcinaService;
 
     public VakcinaController(VakcinaService vakcinaService){
@@ -12,15 +13,14 @@ public class VakcinaController {
     }
 
     @GetMapping("/api/vakcina")
-    public List<Vakcina> getVakcinaByNazov(@RequestParam(required = false) String nazov){
-        return vakcinaService.getVakcinaByNazov(nazov);
+    public List<Vakcina> getVakcinaByNazov(){
+        return vakcinaService.getVakcinaByNazov();
     }
 
     @GetMapping("/api/vakcina/{id}")
     public Vakcina getVakcinaById(@PathVariable int id){
         return vakcinaService.getVakcinaById(id);
     }
-
 
     @PostMapping("/api/vakcina")
     public int createVakcina(@PathVariable Vakcina vakcina){
@@ -32,7 +32,7 @@ public class VakcinaController {
         vakcinaService.deleteVakcina(id);
     }
 
-    @PutMapping("/api/vakcina/{id}") //update by {book}
+    @PutMapping("/api/vakcina/{id}")
     public void updateVakcina(@PathVariable int id, @RequestBody Vakcina vakcina){
         vakcinaService.updateVakcina(id, vakcina);
     }

@@ -1,5 +1,8 @@
-package com.example.projekt;
+package com.example.projekt.Vakcina;
 
+import com.example.projekt.Vakcina.Vakcina;
+import com.example.projekt.Vakcina.VakcinaEntity;
+import com.example.projekt.Vakcina.VakcinaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,7 +30,7 @@ public class VakcinaService {
     }
 
     @Transactional
-    public List<Vakcina> getVakcinaByNazov(String nazov){
+    public List<Vakcina> getVakcinaByNazov(){
         List<Vakcina> ret = new LinkedList<>();
         for (VakcinaEntity v1 : vakcinaRepository.findAll()){
             Vakcina v2 = mapVakcina(v1);
@@ -70,10 +73,8 @@ public class VakcinaService {
     public void updateVakcina(int id , Vakcina vakcina) {
         Optional<VakcinaEntity> byId = vakcinaRepository.findById(id);
         if (byId.isPresent()) {
-            byId.get().setId(vakcina.getId());
             byId.get().setNazov(vakcina.getNazov());
             byId.get().setPocet_davok(vakcina.getPocet_davok());
-
         }
     }
 }
