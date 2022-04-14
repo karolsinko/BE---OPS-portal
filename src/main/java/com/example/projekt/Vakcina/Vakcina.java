@@ -4,7 +4,7 @@ public class Vakcina {
 
     private int id;
     private String nazov;
-    private String pocet_davok;
+    private int pocet_davok;
 
     public int getId() {
         return id;
@@ -22,11 +22,11 @@ public class Vakcina {
         this.nazov = nazov;
     }
 
-    public String getPocet_davok() {
+    public int getPocet_davok() {
         return pocet_davok;
     }
 
-    public void setPocet_davok(String pocet_davok) {
+    public void setPocet_davok(int pocet_davok) {
         this.pocet_davok = pocet_davok;
     }
 }

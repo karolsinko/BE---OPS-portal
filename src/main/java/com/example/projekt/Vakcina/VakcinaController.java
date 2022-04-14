@@ -13,7 +13,7 @@ public class VakcinaController {
     }
 
     @PostMapping("/api/vakcina")
-    public int createVakcina(@PathVariable Vakcina vakcina){
+    public int createVakcina(@RequestBody Vakcina vakcina){
         return vakcinaService.createVakcina(vakcina);
     }
 
