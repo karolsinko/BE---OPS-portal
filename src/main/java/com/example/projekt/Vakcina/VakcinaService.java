@@ -1,8 +1,5 @@
 package com.example.projekt.Vakcina;
 
-import com.example.projekt.Vakcina.Vakcina;
-import com.example.projekt.Vakcina.VakcinaEntity;
-import com.example.projekt.Vakcina.VakcinaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -54,8 +51,7 @@ public class VakcinaService {
     public Vakcina getVakcinaById(int id){
         for(VakcinaEntity v1 : vakcinaRepository.findAll()){
             if(v1.getId() == (id)){
-                Vakcina v2 = mapVakcina(v1);
-                return v2;
+                return mapVakcina(v1);
             }
         }
         return null;
