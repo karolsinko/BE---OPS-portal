@@ -12,19 +12,19 @@ public class VakcinaController {
         this.vakcinaService = vakcinaService;
     }
 
+    @PostMapping("/api/vakcina")
+    public int createVakcina(@RequestBody Vakcina vakcina){
+        return vakcinaService.createVakcina(vakcina);
+    }
+
     @GetMapping("/api/vakcina")
-    public List<Vakcina> getVakcinaByNazov(){
+    public List<Vakcina> getVakcinaByNazov(@RequestParam(required = false) String nazov){
         return vakcinaService.getVakcinaByNazov();
     }
 
     @GetMapping("/api/vakcina/{id}")
     public Vakcina getVakcinaById(@PathVariable int id){
         return vakcinaService.getVakcinaById(id);
-    }
-
-    @PostMapping("/api/vakcina")
-    public int createVakcina(@PathVariable Vakcina vakcina){
-        return vakcinaService.createVakcina(vakcina);
     }
 
     @DeleteMapping("/api/vakcina/{id}")

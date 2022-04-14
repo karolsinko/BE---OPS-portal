@@ -12,19 +12,19 @@ public class OsobaController {
         this.osobaService = osobaService;
     }
 
+    @PostMapping("/api/osoba")
+    public int createOsoba(@RequestBody Osoba osoba){
+        return osobaService.createOsoba(osoba);
+    }
+
     @GetMapping("/api/osoba")
-    public List<Osoba> getOsobaByPriezvisko(){
-        return osobaService.getOsobaByMeno();
+    public List<Osoba> getOsobaByPriezvisko(@RequestParam(required = false) String priezvisko){
+        return osobaService.getOsobaByPriezvisko();
     }
 
     @GetMapping("/api/osoba/{id}")
     public Osoba getOsobaById(@PathVariable int id){
         return osobaService.getOsobaById(id);
-    }
-
-    @PostMapping("/api/osoba")
-    public int createOsoba(@RequestBody Osoba osoba){
-        return osobaService.createOsoba(osoba);
     }
 
     @DeleteMapping("/api/osoba/{id}")

@@ -1,8 +1,5 @@
 package com.example.projekt.Osoba;
 
-import com.example.projekt.Osoba.Osoba;
-import com.example.projekt.Osoba.OsobaEntity;
-import com.example.projekt.Osoba.OsobaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -35,7 +32,7 @@ public class OsobaService {
     }
 
     @Transactional
-    public List<Osoba> getOsobaByMeno() {
+    public List<Osoba> getOsobaByPriezvisko() {
         List<Osoba> ret = new LinkedList<>();
         for (OsobaEntity o1 : osobaRepository.findAll()){
             Osoba o2 = mapOsoba(o1);
@@ -64,8 +61,7 @@ public class OsobaService {
     public Osoba getOsobaById(int id){
         for (OsobaEntity o1 : osobaRepository.findAll()){
             if (o1.getId() == (id)){
-                Osoba o2 = mapOsoba(o1);
-                return o2;
+                return mapOsoba(o1);
             }
         }
         return null;
@@ -87,7 +83,6 @@ public class OsobaService {
             byId.get().setPriezvisko(osoba.getPriezvisko());
             byId.get().setRok_nar(osoba.getRok_nar());
             byId.get().setRod_cislo(osoba.getRod_cislo());
-            byId.get().setBydlisko(osoba.getBydlisko());
             byId.get().setBydlisko(osoba.getBydlisko());
             byId.get().setPohlavie(osoba.getPohlavie());
             byId.get().setTel_cislo(osoba.getTel_cislo());
