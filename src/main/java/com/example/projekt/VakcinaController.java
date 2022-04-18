@@ -19,12 +19,11 @@ public class VakcinaController {
     }
 
     @GetMapping("/api/vakcina/{id}")
-    public List<Vakcina> getVakcinaById(@RequestParam(required = false) int id){
+    public List<Vakcina> getVakcinaById(@PathVariable int id){
         return vakcinaService.getVakcinaById(id);
     }
 
-
-    @PostMapping("/api/vakcina") //create new book
+    @PostMapping("/api/vakcina")
     public List<Vakcina> createVakcina(@RequestBody Vakcina vakcina){
         return vakcinaService.createVakcina(vakcina);
     }
@@ -34,7 +33,7 @@ public class VakcinaController {
         this.vakcinaService.deleteVakcina(id);
     }
 
-    @PutMapping("/api/vakcina/{id}") //update by {book}
+    @PutMapping("/api/vakcina/{id}")
     public List<Vakcina> updateVakcina(@PathVariable int id, @RequestBody Vakcina vakcina){
         return this.vakcinaService.updateVakcina(id, vakcina);
     }

@@ -19,12 +19,11 @@ public class OsobaController {
     }
 
     @GetMapping("/api/osoba/{id}")
-    public List<Osoba> getOsobaById(@RequestParam(required = false) int id){
+    public List<Osoba> getOsobaById(@PathVariable int id){
         return osobaService.getOsobaById(id);
     }
 
-
-    @PostMapping("/api/osoba") //create new book
+    @PostMapping("/api/osoba")
     public List<Osoba> createOsoba(@RequestBody Osoba osoba){
         return osobaService.createOsoba(osoba);
     }
@@ -34,7 +33,7 @@ public class OsobaController {
         this.osobaService.deleteOsoba(id);
     }
 
-    @PutMapping("/api/osoba/{id}") //update by {book}
+    @PutMapping("/api/osoba/{id}")
     public List<Osoba> updateOsoba(@PathVariable int id, @RequestBody Osoba osoba){
         return this.osobaService.updateOsoba(id, osoba);
     }
