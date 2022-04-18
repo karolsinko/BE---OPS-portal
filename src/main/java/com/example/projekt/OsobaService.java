@@ -30,9 +30,18 @@ public class OsobaService {
     }
 
     @Transactional
-    public List<Osoba> getOsobaByPriezvisko() {
+    public List<Osoba> getOsobaByPriezvisko(String priezvisko) {
         List<Osoba> ret = new LinkedList<>();
-        for (OsobaEntity o1 : osobaRepository.findAll()){
+        List<OsobaEntity> osoby = new LinkedList<>();
+        if(priezvisko == null) {
+            osoby = osobaRepository.findAll();
+        }else {
+            Optional <OsobaEntity>foundOsoby = osobaRepository.findByPriezvisko(priezvisko);
+            if(foundOsoby.isPresent()){
+                osoby.add(foundOsoby.get());
+            }
+        }
+        for (OsobaEntity o1 : osoby){
             Osoba o2 = mapOsoba(o1);
             ret.add(o2);
         }

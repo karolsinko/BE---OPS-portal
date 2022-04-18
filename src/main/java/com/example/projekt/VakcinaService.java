@@ -29,7 +29,16 @@ public class VakcinaService {
     @Transactional
     public List<Vakcina> getVakcinaByNazov(String nazov){
         List<Vakcina> ret = new LinkedList<>();
-        for (VakcinaEntity v1 : vakcinaRepository.findAll()){
+        List<VakcinaEntity> vakciny = new LinkedList<>();
+        if(nazov == null) {
+           vakciny = vakcinaRepository.findAll();
+        }else {
+            Optional <VakcinaEntity>foundVakciny = vakcinaRepository.findByNazov(nazov);
+            if(foundVakciny.isPresent()){
+                vakciny.add(foundVakciny.get());
+            }
+        }
+        for (VakcinaEntity v1 : vakciny) {
             Vakcina v2 = mapVakcina(v1);
             ret.add(v2);
         }

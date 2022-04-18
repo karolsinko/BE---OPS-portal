@@ -18,7 +18,7 @@ public class OsobaController {
     }
 
     @GetMapping("/api/osoba/{id}")
-    public List<Osoba> getOsobaById(@PathVariable int id){
+    public Osoba getOsobaById(@PathVariable int id){
         return osobaService.getOsobaById(id);
     }
 

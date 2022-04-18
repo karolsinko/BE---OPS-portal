@@ -21,9 +21,8 @@ public class VakcinaController {
         return vakcinaService.getVakcinaById(id);
     }
 
-
     @PostMapping("/api/vakcina")
-    public int createVakcina(@PathVariable Vakcina vakcina){
+    public int createVakcina(@RequestBody Vakcina vakcina){
         return vakcinaService.createVakcina(vakcina);
     }
 
@@ -32,7 +31,7 @@ public class VakcinaController {
         vakcinaService.deleteVakcina(id);
     }
 
-    @PutMapping("/api/vakcina/{id}") //update by {book}
+    @PutMapping("/api/vakcina/{id}")
     public void updateVakcina(@PathVariable int id, @RequestBody Vakcina vakcina){
         vakcinaService.updateVakcina(id, vakcina);
     }
