@@ -2,89 +2,78 @@ package com.example.projekt;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class VakcinaService {
 
-    private List<Vakcina> vakciny;
+    private  final VakcinaRepository vakcinaRepository;
 
-    public VakcinaService(){
-        this.vakciny = init();
+    public VakcinaService(VakcinaRepository vakcinaRepository){
+        this.vakcinaRepository = vakcinaRepository;
     }
 
-    public List<Vakcina> init(){
-        List<Vakcina> vakciny = new ArrayList<>();
-        Vakcina vakcina1 = new Vakcina();
-        vakcina1.setId(1);
-        vakcina1.setNazov("Pfizer");
-        vakcina1.setPocet_davok(2);
+    private static Vakcina mapVakcina(VakcinaEntity vakcinaEntity){
+        Vakcina vakcina = new Vakcina();
 
-        vakciny.add(vakcina1);
+        vakcina.setId(vakcinaEntity.getId());
+        vakcina.setNazov(vakcinaEntity.getNazov());
+        vakcina.setPocet_davok(vakcinaEntity.getPocet_davok());
+        return vakcina;
 
-        Vakcina vakcina2 = new Vakcina();
-        vakcina2.setId(2);
-        vakcina2.setNazov("Sputnik");
-        vakcina2.setPocet_davok(1);
-        vakciny.add(vakcina2);
-        return vakciny;
     }
 
-
+    @Transactional
     public List<Vakcina> getVakcinaByNazov(String nazov){
-        if (nazov == null){
-            return this.vakciny;
+        List<Vakcina> ret = new LinkedList<>();
+        for (VakcinaEntity v1 : vakcinaRepository.findAll()){
+            Vakcina v2 = mapVakcina(v1);
+            ret.add(v2);
         }
+        return ret;
+    }
 
-        List<Vakcina> filteredVakciny = new ArrayList<>();
+    @Transactional
+    public int createVakcina(Vakcina vakcina){
+        VakcinaEntity vakcinaEntity = new VakcinaEntity();
 
-        for (Vakcina vakcina : vakciny){
-            if (vakcina.getNazov().equals(nazov)){
-                filteredVakciny.add(vakcina);
+        vakcinaEntity.setNazov(vakcina.getNazov());
+        vakcinaEntity.setPocet_davok(vakcina.getPocet_davok());
+
+        this.vakcinaRepository.save(vakcinaEntity);
+        return vakcinaEntity.getId();
+    }
+
+    @Transactional
+    public Vakcina getVakcinaById(int id){
+        for(VakcinaEntity v1 : vakcinaRepository.findAll()){
+            if(v1.getId() == (id)){
+                Vakcina v2 = mapVakcina(v1);
+                return v2;
             }
         }
-
-        return filteredVakciny;
+        return null;
     }
 
-
-    public List<Vakcina> getVakcinaById(int id){
-        if (id == 0){
-            return this.vakciny;
-        }
-
-        List<Vakcina> filteredVakciny = new ArrayList<>();
-
-        for (Vakcina vakcina : vakciny){
-            if (vakcina.getId()==(id)){
-                filteredVakciny.add(vakcina);
-            }
-        }
-
-        return filteredVakciny;
-    }
-
-
-    public List<Vakcina> createVakcina(Vakcina vakcina){
-        this.vakciny.add(vakcina);
-
-        return vakciny;
-    }
-
-
-    public List<Vakcina> updateVakcina(int id, Vakcina vakcina){
-        this.vakciny.get(id).setId(vakcina.getId());
-        this.vakciny.get(id).setNazov(vakcina.getNazov());
-        this.vakciny.get(id).setPocet_davok(vakcina.getPocet_davok());
-
-
-        return vakciny;
-    }
-
-
+    @Transactional
     public void deleteVakcina(int id){
-        this.vakciny.remove(this.vakciny.get(id));
+        Optional<VakcinaEntity> byId = vakcinaRepository.findById(id);
+        if(byId.isPresent()){
+            vakcinaRepository.delete(byId.get());
+        }
     }
 
+    @Transactional
+    public void updateVakcina(int id , Vakcina vakcina) {
+        Optional<VakcinaEntity> byId = vakcinaRepository.findById(id);
+        if (byId.isPresent()) {
+            byId.get().setId(vakcina.getId());
+            byId.get().setNazov(vakcina.getNazov());
+            byId.get().setPocet_davok(vakcina.getPocet_davok());
 
+        }
+    }
 }

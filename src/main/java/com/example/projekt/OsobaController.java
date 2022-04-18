@@ -1,11 +1,10 @@
 package com.example.projekt;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 @RestController
 public class OsobaController {
-    private List<Osoba> osoby;
 
     private OsobaService osobaService;
 
@@ -24,17 +23,17 @@ public class OsobaController {
     }
 
     @PostMapping("/api/osoba")
-    public List<Osoba> createOsoba(@RequestBody Osoba osoba){
+    public int createOsoba(@RequestBody Osoba osoba){
         return osobaService.createOsoba(osoba);
     }
 
     @DeleteMapping("/api/osoba/{id}")
     public void deleteOsoba(@PathVariable int id){
-        this.osobaService.deleteOsoba(id);
+        osobaService.deleteOsoba(id);
     }
 
     @PutMapping("/api/osoba/{id}")
-    public List<Osoba> updateOsoba(@PathVariable int id, @RequestBody Osoba osoba){
-        return this.osobaService.updateOsoba(id, osoba);
+    public void updateOsoba(@PathVariable int id, @RequestBody Osoba osoba){
+        osobaService.updateOsoba(id, osoba);
     }
 }
