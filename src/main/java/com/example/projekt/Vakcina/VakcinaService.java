@@ -1,4 +1,4 @@
-package com.example.projekt;
+package com.example.projekt.Vakcina;
 
 import org.springframework.stereotype.Service;
 

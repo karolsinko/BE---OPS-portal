@@ -1,4 +1,4 @@
-package com.example.projekt;
+package com.example.projekt.Osoba;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

@@ -1,6 +1,13 @@
-package com.example.projekt;
+package com.example.projekt.Osoba;
 
-public class Osoba {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class OsobaEntity {
+    @Id
+    @GeneratedValue
     private int id;
     private String meno;
     private String priezvisko;
@@ -74,5 +81,3 @@ public class Osoba {
         this.tel_cislo = tel_cislo;
     }
 }
-
-
