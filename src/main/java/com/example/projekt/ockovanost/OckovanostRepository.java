@@ -1,4 +1,4 @@
-package com.example.projekt.Ockovanost;
+package com.example.projekt.ockovanost;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

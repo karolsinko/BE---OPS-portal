@@ -1,4 +1,4 @@
-package com.example.projekt.Vakcina;
+package com.example.projekt.vakcina;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

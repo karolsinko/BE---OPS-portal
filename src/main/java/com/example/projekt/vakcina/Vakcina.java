@@ -1,13 +1,7 @@
-package com.example.projekt.Vakcina;
+package com.example.projekt.vakcina;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+public class Vakcina {
 
-@Entity
-public class VakcinaEntity {
-    @Id
-    @GeneratedValue
     private int id;
     private String nazov;
     private int pocet_davok;
@@ -19,6 +13,7 @@ public class VakcinaEntity {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getNazov() {
         return nazov;
@@ -36,3 +31,4 @@ public class VakcinaEntity {
         this.pocet_davok = pocet_davok;
     }
 }
+

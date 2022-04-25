@@ -1,4 +1,4 @@
-package com.example.projekt.Osoba;
+package com.example.projekt.osoba;
 
 import org.springframework.stereotype.Service;
 
@@ -26,6 +26,7 @@ public class OsobaService {
         osoba.setBydlisko(osobaEntity.getBydlisko());
         osoba.setPohlavie(osobaEntity.getPohlavie());
         osoba.setTel_cislo(osobaEntity.getTel_cislo());
+
         return osoba;
     }
 

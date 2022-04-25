@@ -1,4 +1,4 @@
-package com.example.projekt.Osoba;
+package com.example.projekt.osoba;
 
 public class Osoba {
     private int id;

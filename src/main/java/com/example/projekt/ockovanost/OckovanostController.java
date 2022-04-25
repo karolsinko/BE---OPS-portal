@@ -1,4 +1,4 @@
-package com.example.projekt.Ockovanost;
+package com.example.projekt.ockovanost;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public class OckovanostController {
         this.ockovanostService = ockovanostService;
     }
 
-   @GetMapping("/api/ockovanost")
+    @GetMapping("/api/ockovanost")
     public List<Ockovanost> getOckovanost(@RequestParam(required = false) String datum){
         return ockovanostService.getOckovanostByDatum(datum);
     }
@@ -23,18 +23,8 @@ public class OckovanostController {
     }
 
     @PostMapping("/api/ockovanost")
-    public int createOckovanost(@RequestBody Ockovanost ockovanost){
-        return ockovanostService.createOckovanost(ockovanost);
-    }
-
-    @DeleteMapping("/api/ockovanost/{id}")
-    public void deleteOckovanost(@PathVariable int id){
-        ockovanostService.deleteOckovanost(id);
-    }
-
-    @PutMapping("/api/ockovanost/{id}")
-    public void updateOckovanost(@PathVariable int id, @RequestBody Ockovanost ockovanost){
-        ockovanostService.updateOckovanost(id, ockovanost);
+    public int createOckovanost(@RequestBody Ockovanie ockovanie){
+        return ockovanostService.createOckovanost(ockovanie);
     }
 
 }
