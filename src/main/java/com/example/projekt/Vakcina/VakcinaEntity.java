@@ -10,7 +10,7 @@ public class VakcinaEntity {
     @GeneratedValue
     private int id;
     private String nazov;
-    private int pocet_davok;
+    private int pocetDavok;
 
     public int getId() {
         return id;
@@ -28,11 +28,11 @@ public class VakcinaEntity {
         this.nazov = nazov;
     }
 
-    public int getPocet_davok() {
-        return pocet_davok;
+    public int getPocetDavok() {
+        return pocetDavok;
     }
 
-    public void setPocet_davok(int pocet_davok) {
-        this.pocet_davok = pocet_davok;
+    public void setPocetDavok(int pocetDavok) {
+        this.pocetDavok = pocetDavok;
     }
 }

@@ -21,7 +21,7 @@ public class VakcinaService {
 
         vakcina.setId(vakcinaEntity.getId());
         vakcina.setNazov(vakcinaEntity.getNazov());
-        vakcina.setPocet_davok(vakcinaEntity.getPocet_davok());
+        vakcina.setPocetDavok(vakcinaEntity.getPocetDavok());
         return vakcina;
 
     }
@@ -41,7 +41,7 @@ public class VakcinaService {
         VakcinaEntity vakcinaEntity = new VakcinaEntity();
 
         vakcinaEntity.setNazov(vakcina.getNazov());
-        vakcinaEntity.setPocet_davok(vakcina.getPocet_davok());
+        vakcinaEntity.setPocetDavok(vakcina.getPocetDavok());
 
         this.vakcinaRepository.save(vakcinaEntity);
         return vakcinaEntity.getId();
@@ -70,7 +70,7 @@ public class VakcinaService {
         Optional<VakcinaEntity> byId = vakcinaRepository.findById(id);
         if (byId.isPresent()) {
             byId.get().setNazov(vakcina.getNazov());
-            byId.get().setPocet_davok(vakcina.getPocet_davok());
+            byId.get().setPocetDavok(vakcina.getPocetDavok());
         }
     }
 }
