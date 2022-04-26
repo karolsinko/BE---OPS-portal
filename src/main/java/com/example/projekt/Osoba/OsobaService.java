@@ -32,6 +32,17 @@ public class OsobaService {
     }
 
     @Transactional
+    public List<Osoba> getOsoby(){
+        List<Osoba> osoby = new LinkedList<>();
+
+        for (OsobaEntity o1 : OsobaRepository.findAll()){
+            Osoba o2 = mapOsoba(o1);
+            osoby.add(o2);
+        }
+        return osoby;
+    }
+
+    @Transactional
     public List<Osoba> getOsobaByPriezvisko() {
         List<Osoba> ret = new LinkedList<>();
         for (OsobaEntity o1 : osobaRepository.findAll()){

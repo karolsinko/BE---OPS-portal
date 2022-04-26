@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface OsobaRepository extends CrudRepository<OsobaEntity, Integer> {
     @Override
-    List<OsobaEntity> findAll();
+    static List<OsobaEntity> findAll();
     Optional<OsobaEntity> findByPriezvisko(String priezvisko);
     Optional<OsobaEntity> findById(int id);
 }
