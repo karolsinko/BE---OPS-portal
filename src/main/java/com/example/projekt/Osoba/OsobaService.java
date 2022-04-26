@@ -45,7 +45,7 @@ public class OsobaService {
     @Transactional
     public List<Osoba> getOsobaByPriezvisko() {
         List<Osoba> ret = new LinkedList<>();
-        for (OsobaEntity o1 : osobaRepository.findAll()){
+        for (OsobaEntity o1 : OsobaRepository.findAll()){
             Osoba o2 = mapOsoba(o1);
             ret.add(o2);
         }
@@ -70,7 +70,7 @@ public class OsobaService {
 
     @Transactional
     public Osoba getOsobaById(int id){
-        for (OsobaEntity o1 : osobaRepository.findAll()){
+        for (OsobaEntity o1 : OsobaRepository.findAll()){
             if (o1.getId() == (id)){
                 return mapOsoba(o1);
             }
