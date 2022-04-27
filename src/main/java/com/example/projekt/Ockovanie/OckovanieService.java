@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OckovanieService {
+public class OckovanieService{
     private final OckovanieRepository ockovanieRepository;
     private final OsobaRepository osobaRepository;
     private final VakcinaRepository vakcinaRepository;
@@ -25,14 +25,6 @@ public class OckovanieService {
     @Autowired
     private final VakcinaService vakcinaService;
 
-
-    public OckovanieService(OckovanieRepository ockovanieRepository, OsobaService osobaService, VakcinaService vakcinaService, OsobaRepository osobaRepository, VakcinaRepository vakcinaRepository) {
-        this.ockovanieRepository = ockovanieRepository;
-        this.osobaRepository = osobaRepository;
-        this.vakcinaRepository = vakcinaRepository;
-        this.osobaService = osobaService;
-        this.vakcinaService = vakcinaService;
-    }
 
     public OckovanieService(OckovanieRepository ockovanieRepository,OsobaRepository osobaRepository, VakcinaRepository vakcinaRepository, OsobaService osobaService, VakcinaService vakcinaService) {
         this.ockovanieRepository = ockovanieRepository;
