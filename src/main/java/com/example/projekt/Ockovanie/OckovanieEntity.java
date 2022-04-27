@@ -19,11 +19,12 @@ public class OckovanieEntity {
     @ManyToOne
     @JoinColumn(name = "vakcinaId")
     private VakcinaEntity vakcina;
-
+/*
     private String meno;
     private String priezvisko;
     private String rodCislo;
     private String nazov;
+ */
     private Timestamp datumOckovania;
 
     public int getOckovanieId() {
@@ -47,7 +48,7 @@ public class OckovanieEntity {
     public void setVakcina(VakcinaEntity vakcina) {
         this.vakcina = vakcina;
     }
-
+/*
     public String getMeno() {
         return meno;
     }
@@ -79,7 +80,7 @@ public class OckovanieEntity {
     public void setNazov(String nazov) {
         this.nazov = nazov;
     }
-
+*/
     public Timestamp getDatumOckovania() {
         return datumOckovania;
     }

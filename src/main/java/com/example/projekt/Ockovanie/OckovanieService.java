@@ -40,9 +40,11 @@ public class OckovanieService{
         ockovanie.setOckovanieId((int)ockovanieEntity.getOckovanieId());
         ockovanie.setOsobaId((int)ockovanieEntity.getOsoba().getId());
         ockovanie.setVakcinaId((int)ockovanieEntity.getVakcina().getId());
+        /*
         ockovanie.setMeno(ockovanieEntity.getOsoba().getMeno());
         ockovanie.setPriezvisko(ockovanieEntity.getOsoba().getPriezvisko());
         ockovanie.setRodCislo(ockovanieEntity.getOsoba().getRodCislo());
+         */
         ockovanie.setDatumOckovania(ockovanieEntity.getDatumOckovania());
 
 
