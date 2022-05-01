@@ -1,15 +1,13 @@
 package com.example.projekt.Ockovanie;
 
 import com.example.projekt.Osoba.OsobaService;
-import com.example.projekt.Vakcina.Vakcina;
 import com.example.projekt.Vakcina.VakcinaService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OckovanieController {
-    private OckovanieService ockovanieService;
+    private final OckovanieService ockovanieService;
     private OsobaService osobaService;
     private VakcinaService vakcinaService;
 

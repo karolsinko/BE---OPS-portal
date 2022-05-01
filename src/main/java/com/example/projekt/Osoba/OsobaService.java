@@ -32,17 +32,6 @@ public class OsobaService {
     }
 
     @Transactional
-    public List<Osoba> getOsoby(){
-        List<Osoba> osoby = new LinkedList<>();
-
-        for (OsobaEntity o1 : osobaRepository.findAll()){
-            Osoba o2 = mapOsoba(o1);
-            osoby.add(o2);
-        }
-        return osoby;
-    }
-
-    @Transactional
     public List<Osoba> getOsobaByPriezvisko() {
         List<Osoba> ret = new LinkedList<>();
         for (OsobaEntity o1 : osobaRepository.findAll()){
@@ -81,9 +70,7 @@ public class OsobaService {
     @Transactional
     public void deleteOsoba(int id){
         Optional<OsobaEntity> byId = osobaRepository.findById(id);
-        if (byId.isPresent()){
-            osobaRepository.delete(byId.get());
-        }
+        byId.ifPresent(osobaRepository::delete);
     }
 
     @Transactional

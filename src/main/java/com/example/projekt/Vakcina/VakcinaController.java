@@ -6,7 +6,7 @@ import java.util.List;
 @RestController
 public class VakcinaController {
 
-    private VakcinaService vakcinaService;
+    private final VakcinaService vakcinaService;
 
     public VakcinaController(VakcinaService vakcinaService){
         this.vakcinaService = vakcinaService;
