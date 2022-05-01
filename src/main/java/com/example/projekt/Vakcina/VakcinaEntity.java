@@ -1,15 +1,17 @@
 package com.example.projekt.Vakcina;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "VakcinaEntity")
 public class VakcinaEntity {
     @Id
     @GeneratedValue
+    @Column(name = "id", nullable = false)
     private int id;
+    @Column(name = "nazov", nullable = false)
     private String nazov;
+    @Column(name = "pocetDavok", nullable = false)
     private int pocetDavok;
 
     public int getId() {
