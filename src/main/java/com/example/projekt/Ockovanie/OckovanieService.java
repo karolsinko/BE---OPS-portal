@@ -34,12 +34,12 @@ public class OckovanieService{
         this.vakcinaService=vakcinaService;
     }
 
-    private static Ockovanie mapToOckovanie(OckovanieEntity ockovanieEntity) {
+    private Ockovanie mapToOckovanie(OckovanieEntity ockovanieEntity) {
         Ockovanie ockovanie = new Ockovanie();
 
-        ockovanie.setOckovanieId((int)ockovanieEntity.getOckovanieId());
-        ockovanie.setOsobaId((int)ockovanieEntity.getOsoba().getId());
-        ockovanie.setVakcinaId((int)ockovanieEntity.getVakcina().getId());
+        ockovanie.setId((int)ockovanieEntity.getOckovanieId());
+        ockovanie.setOsoba( osobaService.mapOsoba(ockovanieEntity.getOsoba()));
+        ockovanie.setVakcina(vakcinaService.mapVakcina(ockovanieEntity.getVakcina()));
         /*
         ockovanie.setMeno(ockovanieEntity.getOsoba().getMeno());
         ockovanie.setPriezvisko(ockovanieEntity.getOsoba().getPriezvisko());
@@ -74,8 +74,8 @@ public class OckovanieService{
     public int createOckovanie(Ockovanie ockovanie) {
         OckovanieEntity ockovanieEntity = new OckovanieEntity();
 
-        Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsobaId()));
-        Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcinaId()));
+        Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsoba().getId()));
+        Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcina().getId()));
 
         if(o.isPresent()) {
             ockovanieEntity.setOsoba(o.get());
@@ -98,8 +98,8 @@ public class OckovanieService{
 
         if (ockovanieEntity.isPresent()) {
 
-            Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsobaId()));
-            Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcinaId()));
+            Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsoba().getId()));
+            Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcina().getId()));
 
 
             if(o.isPresent()) {

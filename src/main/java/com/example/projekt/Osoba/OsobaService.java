@@ -16,7 +16,7 @@ public class OsobaService {
         this.osobaRepository = osobaRepository;
     }
 
-    private static Osoba mapOsoba(OsobaEntity osobaEntity){
+    public static Osoba mapOsoba(OsobaEntity osobaEntity){
         Osoba osoba = new Osoba();
 
         osoba.setId(osobaEntity.getId());

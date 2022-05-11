@@ -9,13 +9,11 @@ public class Ockovanie {
     private int id;
     private Osoba osoba;
     private Vakcina vakcina;
-    private int osobaId;
-    private int vakcinaId;
 
     private Timestamp datumOckovania;
 
-    public int getOckovanieId(){return id;}
-    public void setOckovanieId(int id){this.id=id;}
+    public int getId(){return id;}
+    public void setId(int id){this.id=id;}
 
     public Osoba getOsoba() {
         return osoba;
@@ -30,9 +28,5 @@ public class Ockovanie {
     public Timestamp getDatumOckovania() {  return datumOckovania;}
     public void setDatumOckovania(Timestamp datumOckovania) {this.datumOckovania = datumOckovania;}
 
-    public int getOsobaId() {return osobaId;}
-    public void setOsobaId(int osobaId) {this.osobaId = osobaId;    }
 
-    public int getVakcinaId() {return vakcinaId;}
-    public void setVakcinaId(int vakcinaId) {this.vakcinaId = vakcinaId;}
 }

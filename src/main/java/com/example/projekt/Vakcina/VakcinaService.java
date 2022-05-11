@@ -16,7 +16,7 @@ public class VakcinaService {
         this.vakcinaRepository = vakcinaRepository;
     }
 
-    private static Vakcina mapVakcina(VakcinaEntity vakcinaEntity){
+    public static Vakcina mapVakcina(VakcinaEntity vakcinaEntity){
         Vakcina vakcina = new Vakcina();
 
         vakcina.setId(vakcinaEntity.getId());
