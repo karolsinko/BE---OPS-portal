@@ -6,7 +6,7 @@ import java.util.List;
 @RestController
 public class OsobaController {
 
-    private OsobaService osobaService;
+    private final OsobaService osobaService;
 
     public OsobaController(OsobaService osobaService){
         this.osobaService = osobaService;

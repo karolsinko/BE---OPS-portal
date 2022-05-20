@@ -16,17 +16,17 @@ public class OsobaService {
         this.osobaRepository = osobaRepository;
     }
 
-    private static Osoba mapOsoba(OsobaEntity osobaEntity){
+    public static Osoba mapOsoba(OsobaEntity osobaEntity){
         Osoba osoba = new Osoba();
 
         osoba.setId(osobaEntity.getId());
         osoba.setMeno(osobaEntity.getMeno());
         osoba.setPriezvisko(osobaEntity.getPriezvisko());
-        osoba.setRok_nar(osobaEntity.getRok_nar());
-        osoba.setRod_cislo(osobaEntity.getRod_cislo());
+        osoba.setRokNar(osobaEntity.getRokNar());
+        osoba.setRodCislo(osobaEntity.getRodCislo());
         osoba.setBydlisko(osobaEntity.getBydlisko());
         osoba.setPohlavie(osobaEntity.getPohlavie());
-        osoba.setTel_cislo(osobaEntity.getTel_cislo());
+        osoba.setTelCislo(osobaEntity.getTelCislo());
         return osoba;
 
     }
@@ -47,11 +47,11 @@ public class OsobaService {
 
         osobaEntity.setMeno(osoba.getMeno());
         osobaEntity.setPriezvisko(osoba.getPriezvisko());
-        osobaEntity.setRok_nar(osoba.getRok_nar());
-        osobaEntity.setRod_cislo(osoba.getRod_cislo());
+        osobaEntity.setRokNar(osoba.getRokNar());
+        osobaEntity.setRodCislo(osoba.getRodCislo());
         osobaEntity.setBydlisko(osoba.getBydlisko());
         osobaEntity.setPohlavie(osoba.getPohlavie());
-        osobaEntity.setTel_cislo(osoba.getTel_cislo());
+        osobaEntity.setTelCislo(osoba.getTelCislo());
 
         this.osobaRepository.save(osobaEntity);
         return osobaEntity.getId();
@@ -70,9 +70,7 @@ public class OsobaService {
     @Transactional
     public void deleteOsoba(int id){
         Optional<OsobaEntity> byId = osobaRepository.findById(id);
-        if (byId.isPresent()){
-            osobaRepository.delete(byId.get());
-        }
+        byId.ifPresent(osobaRepository::delete);
     }
 
     @Transactional
@@ -81,11 +79,11 @@ public class OsobaService {
         if (byId.isPresent()){
             byId.get().setMeno(osoba.getMeno());
             byId.get().setPriezvisko(osoba.getPriezvisko());
-            byId.get().setRok_nar(osoba.getRok_nar());
-            byId.get().setRod_cislo(osoba.getRod_cislo());
+            byId.get().setRokNar(osoba.getRokNar());
+            byId.get().setRodCislo(osoba.getRodCislo());
             byId.get().setBydlisko(osoba.getBydlisko());
             byId.get().setPohlavie(osoba.getPohlavie());
-            byId.get().setTel_cislo(osoba.getTel_cislo());
+            byId.get().setTelCislo(osoba.getTelCislo());
         }
     }
 }
