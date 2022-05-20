@@ -61,7 +61,7 @@ public class OckovanieService{
     }
 
     @Transactional
-    public List<Ockovanie> getOckovania(int id) {
+    public List<Ockovanie> getOckovania() {
         List<Ockovanie> ockovanie = new LinkedList<>();
         for (OckovanieEntity o1 : ockovanieRepository.findAll()) {
             Ockovanie o2 = mapToOckovanie(o1);
