@@ -37,14 +37,10 @@ public class OckovanieService{
     private Ockovanie mapToOckovanie(OckovanieEntity ockovanieEntity) {
         Ockovanie ockovanie = new Ockovanie();
 
-        ockovanie.setId((int)ockovanieEntity.getOckovanieId());
-        ockovanie.setOsoba( osobaService.mapOsoba(ockovanieEntity.getOsoba()));
+        ockovanie.setId(ockovanieEntity.getOckovanieId());
+        ockovanie.setOsoba(osobaService.mapOsoba(ockovanieEntity.getOsoba()));
         ockovanie.setVakcina(vakcinaService.mapVakcina(ockovanieEntity.getVakcina()));
-        /*
-        ockovanie.setMeno(ockovanieEntity.getOsoba().getMeno());
-        ockovanie.setPriezvisko(ockovanieEntity.getOsoba().getPriezvisko());
-        ockovanie.setRodCislo(ockovanieEntity.getOsoba().getRodCislo());
-         */
+
         ockovanie.setDatumOckovania(ockovanieEntity.getDatumOckovania());
 
 
@@ -61,7 +57,7 @@ public class OckovanieService{
     }
 
     @Transactional
-    public List<Ockovanie> getOckovania(int id) {
+    public List<Ockovanie> getOckovania() {
         List<Ockovanie> ockovanie = new LinkedList<>();
         for (OckovanieEntity o1 : ockovanieRepository.findAll()) {
             Ockovanie o2 = mapToOckovanie(o1);

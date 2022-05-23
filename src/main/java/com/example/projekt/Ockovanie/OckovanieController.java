@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class OckovanieController {
     private final OckovanieService ockovanieService;
     private OsobaService osobaService;
@@ -21,8 +22,8 @@ public class OckovanieController {
     }
 
     @GetMapping("/api/ockovanost")
-    public List<Ockovanie> getOckovania(@PathVariable int id) {
-        return ockovanieService.getOckovania(id);
+    public List<Ockovanie> getOckovania() {
+        return ockovanieService.getOckovania();
     }
 
     @PostMapping("/api/ockovanost")

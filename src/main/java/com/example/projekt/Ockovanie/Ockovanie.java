@@ -3,6 +3,7 @@ package com.example.projekt.Ockovanie;
 import com.example.projekt.Osoba.Osoba;
 import com.example.projekt.Vakcina.Vakcina;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Ockovanie {
