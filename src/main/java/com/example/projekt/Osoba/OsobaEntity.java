@@ -13,16 +13,17 @@ public class OsobaEntity {
     private String meno;
     @Column(name = "priezvisko", nullable = false)
     private String priezvisko;
-    @Column(name = "rokNar", nullable = false)
-    private String rokNar;
-    @Column(name = "rodCislo", nullable = false)
-    private String rodCislo;
+    @Column(name = "rok_nar", nullable = false)
+    private String rok_nar;
+    @Column(name = "rod_cislo", nullable = false)
+    private String rod_cislo;
     @Column(name = "bydlisko", nullable = false)
     private String bydlisko;
+    @Column(name = "tel_cislo", nullable = false)
+    private String tel_cislo;
     @Column(name = "pohlavie", nullable = false)
     private String pohlavie;
-    @Column(name = "telCislo", nullable = false)
-    private String telCislo;
+
 
     public int getId() {
         return id;
@@ -49,19 +50,19 @@ public class OsobaEntity {
     }
 
     public String getRokNar() {
-        return rokNar;
+        return rok_nar;
     }
 
     public void setRokNar(String rokNar) {
-        this.rokNar = rokNar;
+        this.rok_nar = rokNar;
     }
 
     public String getRodCislo() {
-        return rodCislo;
+        return rod_cislo;
     }
 
-    public void setRodCislo(String rodCislo) {
-        this.rodCislo = rodCislo;
+    public void setRodCislo(String rod_cislo) {
+        this.rod_cislo = rod_cislo;
     }
 
     public String getBydlisko() {
@@ -81,10 +82,10 @@ public class OsobaEntity {
     }
 
     public String getTelCislo() {
-        return telCislo;
+        return tel_cislo;
     }
 
-    public void setTelCislo(String telCislo) {
-        this.telCislo = telCislo;
+    public void setTelCislo(String tel_cislo) {
+        this.tel_cislo = tel_cislo;
     }
 }

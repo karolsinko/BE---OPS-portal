@@ -11,8 +11,8 @@ public class VakcinaEntity {
     private int id;
     @Column(name = "nazov", nullable = false)
     private String nazov;
-    @Column(name = "pocetDavok", nullable = false)
-    private int pocetDavok;
+    @Column(name = "pocet_davok", nullable = false)
+    private int pocet_davok;
 
     public int getId() {
         return id;
@@ -31,10 +31,10 @@ public class VakcinaEntity {
     }
 
     public int getPocetDavok() {
-        return pocetDavok;
+        return pocet_davok;
     }
 
-    public void setPocetDavok(int pocetDavok) {
-        this.pocetDavok = pocetDavok;
+    public void setPocetDavok(int pocet_davok) {
+        this.pocet_davok = pocet_davok;
     }
 }

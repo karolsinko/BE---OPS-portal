@@ -4,9 +4,9 @@ public class Osoba {
     private int id;
     private String meno;
     private String priezvisko;
-    private String rokNar;
-    private String rodCislo;
-    private String telCislo;
+    private String rok_nar;
+    private String rod_cislo;
+    private String tel_cislo;
     private String bydlisko;
     private String pohlavie;
 
@@ -36,19 +36,19 @@ public class Osoba {
     }
 
     public String getRokNar() {
-        return rokNar;
+        return rok_nar;
     }
 
-    public void setRokNar(String rokNar) {
-        this.rokNar = rokNar;
+    public void setRokNar(String rok_nar) {
+        this.rok_nar = rok_nar;
     }
 
     public String getRodCislo() {
-        return rodCislo;
+        return rod_cislo;
     }
 
-    public void setRodCislo(String rodCislo) {
-        this.rodCislo = rodCislo;
+    public void setRodCislo(String rod_cislo) {
+        this.rod_cislo = rod_cislo;
     }
 
     public String getBydlisko() {
@@ -68,11 +68,11 @@ public class Osoba {
     }
 
     public String getTelCislo() {
-        return telCislo;
+        return tel_cislo;
     }
 
-    public void setTelCislo(String telCislo) {
-        this.telCislo = telCislo;
+    public void setTelCislo(String tel_cislo) {
+        this.tel_cislo = tel_cislo;
     }
 }
 

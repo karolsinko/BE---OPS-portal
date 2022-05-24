@@ -1,12 +1,9 @@
 package com.example.projekt.Ockovanie;
 
-import com.example.projekt.Osoba.Osoba;
 import com.example.projekt.Osoba.OsobaEntity;
-import com.example.projekt.Vakcina.Vakcina;
 import com.example.projekt.Vakcina.VakcinaEntity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -16,13 +13,13 @@ public class OckovanieEntity {
     @GeneratedValue
     private int id;
     @ManyToOne
-    @JoinColumn(name = "osobaId")
+    @JoinColumn(name = "osoba")
     private OsobaEntity osoba;
     @ManyToOne
-    @JoinColumn(name = "vakcinaId")
+    @JoinColumn(name = "vakcina")
     private VakcinaEntity vakcina;
 
-    private Timestamp datumOckovania;
+    private Timestamp datum_ockovania;
 
     public int getOckovanieId() {
         return id;
@@ -47,10 +44,10 @@ public class OckovanieEntity {
     }
 
     public Timestamp getDatumOckovania() {
-        return datumOckovania;
+        return datum_ockovania;
     }
 
-    public void setDatumOckovania(Timestamp datumOckovania) {
-        this.datumOckovania = datumOckovania;
+    public void setDatumOckovania(Timestamp datum_ockovania) {
+        this.datum_ockovania = datum_ockovania;
     }
 }

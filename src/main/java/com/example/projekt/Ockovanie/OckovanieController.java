@@ -37,7 +37,7 @@ public class OckovanieController {
     }
 
     @PutMapping("/api/ockovanost/{id}")
-    public void upddateOckovanie(@PathVariable int id, @RequestBody Ockovanie ockovanie) {
+    public void updateOckovanie(@PathVariable int id, @RequestBody Ockovanie ockovanie) {
         ockovanieService.updateOckovanie(id, ockovanie);
     }
 }

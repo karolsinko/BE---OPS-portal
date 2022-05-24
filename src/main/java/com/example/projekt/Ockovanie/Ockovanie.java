@@ -3,7 +3,6 @@ package com.example.projekt.Ockovanie;
 import com.example.projekt.Osoba.Osoba;
 import com.example.projekt.Vakcina.Vakcina;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Ockovanie {
@@ -11,7 +10,7 @@ public class Ockovanie {
     private Osoba osoba;
     private Vakcina vakcina;
 
-    private Timestamp datumOckovania;
+    private Timestamp datum_ockovania;
 
     public int getId(){return id;}
     public void setId(int id){this.id=id;}
@@ -26,8 +25,8 @@ public class Ockovanie {
     }
     public void setVakcina(Vakcina vakcina) {this.vakcina = vakcina;}
 
-    public Timestamp getDatumOckovania() {  return datumOckovania;}
-    public void setDatumOckovania(Timestamp datumOckovania) {this.datumOckovania = datumOckovania;}
+    public Timestamp getDatumOckovania() {  return datum_ockovania;}
+    public void setDatumOckovania(Timestamp datum_ockovania) {this.datum_ockovania = datum_ockovania;}
 
 
 }
