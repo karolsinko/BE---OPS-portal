@@ -99,17 +99,5 @@ public class OckovanostService {
             ockovanostRepository.delete(byId.get());
         }
     }
-/*
-    @Transactional
-    public void updateOckovanost(int id, Ockovanost ockovanost){
-        Optional<OckovanostEntity> byId = osobaRepository.findById(id);
-        if (byId.isPresent()){
-            byId.get().setId(ockovanost.getId());
-            byId.get().setDatum(ockovanost.getDatum());
-            byId.get().setOsoba(ockovanost.getOsoba());
-            byId.get().setVakcina(ockovanost.getVakcina());
-        }
-    }
 
-*/
 }
