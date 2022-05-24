@@ -1,4 +1,4 @@
-package com.example.projekt.vakcina;
+package com.example.projekt.Vakcina;
 
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class VakcinaService {
         this.vakcinaRepository = vakcinaRepository;
     }
 
-    private static Vakcina mapVakcina(VakcinaEntity vakcinaEntity){
+    public static Vakcina mapVakcina(VakcinaEntity vakcinaEntity){
         Vakcina vakcina = new Vakcina();
 
         vakcina.setId(vakcinaEntity.getId());

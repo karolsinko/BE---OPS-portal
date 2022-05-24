@@ -34,14 +34,14 @@ public class OckovanieService{
         this.vakcinaService=vakcinaService;
     }
 
-    private Ockovanie mapToOckovanie(OckovanieEntity ockovanieEntity) {
+    public Ockovanie mapToOckovanie(OckovanieEntity ockovanieEntity) {
         Ockovanie ockovanie = new Ockovanie();
 
         ockovanie.setId(ockovanieEntity.getOckovanieId());
-        ockovanie.setOsoba(osobaService.mapOsoba(ockovanieEntity.getOsoba()));
-        ockovanie.setVakcina(vakcinaService.mapVakcina(ockovanieEntity.getVakcina()));
+        ockovanie.setOsobaId(OsobaService.mapOsoba(ockovanieEntity.getOsoba()).getId());
+        ockovanie.setVakcinaId(VakcinaService.mapVakcina(ockovanieEntity.getVakcina()).getId());
 
-        ockovanie.setDatumOckovania(ockovanieEntity.getDatumOckovania());
+        ockovanie.setDatum(ockovanieEntity.getDatum());
 
 
         return ockovanie;
@@ -50,10 +50,7 @@ public class OckovanieService{
     @Transactional
     public Ockovanie getOckovanie(int id) {
         Optional<OckovanieEntity> byId = ockovanieRepository.findById(id);
-        if (byId.isPresent()) {
-            return mapToOckovanie(byId.get());
-        }
-        return null;
+        return byId.map(this::mapToOckovanie).orElse(null);
     }
 
     @Transactional
@@ -70,17 +67,13 @@ public class OckovanieService{
     public int createOckovanie(Ockovanie ockovanie) {
         OckovanieEntity ockovanieEntity = new OckovanieEntity();
 
-        Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsoba().getId()));
-        Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcina().getId()));
+        Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsobaId()));
+        Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcinaId()));
 
-        if(o.isPresent()) {
-            ockovanieEntity.setOsoba(o.get());
-        }
+        o.ifPresent(ockovanieEntity::setOsoba);
 
-        if(v.isPresent()) {
-            ockovanieEntity.setVakcina(v.get());
-        }
-        ockovanieEntity.setDatumOckovania(ockovanie.getDatumOckovania());
+        v.ifPresent(ockovanieEntity::setVakcina);
+        ockovanieEntity.setDatum(ockovanie.getDatum());
 
 
         this.ockovanieRepository.save(ockovanieEntity);
@@ -94,19 +87,15 @@ public class OckovanieService{
 
         if (ockovanieEntity.isPresent()) {
 
-            Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsoba().getId()));
-            Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcina().getId()));
+            Optional <OsobaEntity> o = osobaRepository.findById(Math.toIntExact(ockovanie.getOsobaId()));
+            Optional <VakcinaEntity> v = vakcinaRepository.findById(Math.toIntExact(ockovanie.getVakcinaId()));
 
 
-            if(o.isPresent()) {
-                ockovanieEntity.get().setOsoba(o.get());
-            }
+            o.ifPresent(osobaEntity -> ockovanieEntity.get().setOsoba(osobaEntity));
 
-            if(v.isPresent()) {
-                ockovanieEntity.get().setVakcina(v.get());
-            }
+            v.ifPresent(vakcinaEntity -> ockovanieEntity.get().setVakcina(vakcinaEntity));
 
-            ockovanieEntity.get().setDatumOckovania(ockovanie.getDatumOckovania());
+            ockovanieEntity.get().setDatum(ockovanie.getDatum());
 
 
         }
@@ -115,9 +104,7 @@ public class OckovanieService{
     @Transactional
     public void deleteOckovanie(int id) {
         Optional<OckovanieEntity> byId = ockovanieRepository.findById(id);
-        if (byId.isPresent()) {
-            ockovanieRepository.delete(byId.get());
-        }
+        byId.ifPresent(ockovanieRepository::delete);
     }
     @Transactional
     public List<OckovanieEntity> getVsetkyOckovania(){

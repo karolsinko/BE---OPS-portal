@@ -1,4 +1,4 @@
-package com.example.projekt.osoba;
+package com.example.projekt.Osoba;
 
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class OsobaService {
         this.osobaRepository = osobaRepository;
     }
 
-    private static Osoba mapOsoba(OsobaEntity osobaEntity){
+    public static Osoba mapOsoba(OsobaEntity osobaEntity){
         Osoba osoba = new Osoba();
 
         osoba.setId(osobaEntity.getId());

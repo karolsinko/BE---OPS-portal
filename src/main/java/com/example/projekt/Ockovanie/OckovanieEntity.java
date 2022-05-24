@@ -5,6 +5,7 @@ import com.example.projekt.Vakcina.VakcinaEntity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "OckovanieEntity")
@@ -19,7 +20,8 @@ public class OckovanieEntity {
     @JoinColumn(name = "vakcina")
     private VakcinaEntity vakcina;
 
-    private Timestamp datum_ockovania;
+    @Column(columnDefinition = "DATE")
+    private LocalDate datum;
 
     public int getOckovanieId() {
         return id;
@@ -43,11 +45,11 @@ public class OckovanieEntity {
         this.vakcina = vakcina;
     }
 
-    public Timestamp getDatumOckovania() {
-        return datum_ockovania;
+    public LocalDate getDatum() {
+        return datum;
     }
 
-    public void setDatumOckovania(Timestamp datum_ockovania) {
-        this.datum_ockovania = datum_ockovania;
+    public void setDatum(LocalDate datum) {
+        this.datum = datum;
     }
 }

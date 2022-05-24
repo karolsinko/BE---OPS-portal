@@ -1,4 +1,4 @@
-package com.example.projekt.vakcina;
+package com.example.projekt.Vakcina;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

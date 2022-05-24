@@ -1,4 +1,4 @@
-package com.example.projekt.vakcina;
+package com.example.projekt.Vakcina;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

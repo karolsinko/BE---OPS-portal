@@ -1,4 +1,4 @@
-package com.example.projekt.vakcina;
+package com.example.projekt.Vakcina;
 
 public class Vakcina {
 
@@ -13,7 +13,6 @@ public class Vakcina {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getNazov() {
         return nazov;

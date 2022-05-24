@@ -1,32 +1,43 @@
 package com.example.projekt.Ockovanie;
 
-import com.example.projekt.Osoba.Osoba;
-import com.example.projekt.Vakcina.Vakcina;
 
-import java.sql.Timestamp;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
 
 public class Ockovanie {
     private int id;
-    private Osoba osoba;
-    private Vakcina vakcina;
+    private int osobaId;
+    private int vakcinaId;
 
-    private Timestamp datum_ockovania;
+    @JsonFormat(pattern = "dd.MM.yyyy")
+    private LocalDate datum;
 
     public int getId(){return id;}
     public void setId(int id){this.id=id;}
 
-    public Osoba getOsoba() {
-        return osoba;
+    public int getOsobaId() {
+        return osobaId;
     }
-    public void setOsoba(Osoba osoba) {this.osoba = osoba;}
 
-    public Vakcina getVakcina() {
-        return vakcina;
+    public void setOsobaId(int osobaId) {
+        this.osobaId = osobaId;
     }
-    public void setVakcina(Vakcina vakcina) {this.vakcina = vakcina;}
 
-    public Timestamp getDatumOckovania() {  return datum_ockovania;}
-    public void setDatumOckovania(Timestamp datum_ockovania) {this.datum_ockovania = datum_ockovania;}
+    public int getVakcinaId() {
+        return vakcinaId;
+    }
 
+    public void setVakcinaId(int vakcinaId) {
+        this.vakcinaId = vakcinaId;
+    }
 
+    public LocalDate getDatum() {
+        return datum;
+    }
+
+    public void setDatum(LocalDate datum) {
+        this.datum = datum;
+
+    }
 }

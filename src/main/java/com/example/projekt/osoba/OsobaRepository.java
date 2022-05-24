@@ -1,4 +1,4 @@
-package com.example.projekt.osoba;
+package com.example.projekt.Osoba;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

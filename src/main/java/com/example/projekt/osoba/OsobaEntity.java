@@ -1,4 +1,4 @@
-package com.example.projekt.osoba;
+package com.example.projekt.Osoba;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
