@@ -1,0 +1,33 @@
+package com.example.projekt.Skripta;
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/skripta")
+public class SkriptaController {
+    private final SkriptaService skriptaService;
+
+    public SkriptaController(SkriptaService skriptaService) {
+        this.skriptaService = skriptaService;
+    }
+
+    @PostMapping("api/skripta")
+    public SkriptaEntity vytvorSkript(@RequestBody SkriptaEntity skriptaEntity) {
+        return skriptaService.vytvorSkript(skriptaEntity);
+    }
+
+    @GetMapping("api/skripta/{id}")
+    public SkriptaEntity dostanSkriptPodlaId(@PathVariable Long id) {
+        return skriptaService.dostanSkriptPodlaId(id);
+    }
+
+    @PutMapping("api/skripta/{id}")
+    public SkriptaEntity modifikujSkript(@PathVariable Long id, @RequestBody SkriptaEntity skriptaEntity) {
+        return skriptaService.modifikujSkript(id, skriptaEntity);
+    }
+
+    @DeleteMapping("api/skripta/{id}")
+    public void vymazSkript(@PathVariable Long id) {
+        skriptaService.vymazSkript(id);
+    }
+}

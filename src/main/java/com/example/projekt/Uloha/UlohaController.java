@@ -13,22 +13,22 @@ public class UlohaController {
     }
 
     @PostMapping("api/cvicenia")
-    public UlohaEntity createTask(@RequestBody UlohaEntity ulohaEntity) {
+    public UlohaEntity vytvorUlohu(@RequestBody UlohaEntity ulohaEntity) {
         return ulohaService.vytvorUlohu(ulohaEntity);
     }
 
     @GetMapping("api/cvicenia/{id}")
-    public UlohaEntity getTaskById(@PathVariable Long id) {
+    public UlohaEntity dostanOtazkuPodlaId(@PathVariable Long id) {
         return ulohaService.dostanOtazkuPodlaId(id);
     }
 
     @PutMapping("api/cvicenia/{id}")
-    public UlohaEntity updateTask(@PathVariable Long id, @RequestBody UlohaEntity ulohaEntity) {
+    public UlohaEntity modifikujOtazku(@PathVariable Long id, @RequestBody UlohaEntity ulohaEntity) {
         return ulohaService.modifikujOtazku(id, ulohaEntity);
     }
 
     @DeleteMapping("api/cvicenia/{id}")
-    public void deleteTask(@PathVariable Long id) {
+    public void vymazOtazku(@PathVariable Long id) {
         ulohaService.vymazOtazku(id);
     }
 }

@@ -2,11 +2,12 @@ package com.example.projekt.Uloha;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tasks")
+@Table(name = "cvicenia")
 public class UlohaEntity {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id", nullable = false)
         private Long id;
 
         @Column(name = "content", nullable = false)

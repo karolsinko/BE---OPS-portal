@@ -1,8 +1,11 @@
 package com.example.projekt.Uloha;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 public class UlohaService {
@@ -11,6 +14,26 @@ public class UlohaService {
 
     public UlohaService(UlohaRepository ulohaRepository) {
         this.ulohaRepository = ulohaRepository;
+    }
+
+    public static Uloha mapUlohy(UlohaEntity ulohaEntity){
+        Uloha uloha = new Uloha(ulohaEntity.getId(), ulohaEntity.getContent(), ulohaEntity.getInput());
+
+        uloha.setId(ulohaEntity.getId());
+        uloha.setContent(ulohaEntity.getContent());
+        uloha.setInput(ulohaEntity.getInput());
+        return uloha;
+
+    }
+
+    @Transactional
+    public List<Uloha> dostanSkriptPodlaId() {
+        List<Uloha> ret = new LinkedList<>();
+        for (UlohaEntity u1 : ulohaRepository.findAll()){
+            Uloha u2 = mapUlohy(u1);
+            ret.add(u2);
+        }
+        return ret;
     }
 
     public UlohaEntity vytvorUlohu(UlohaEntity ulohaEntity) {
