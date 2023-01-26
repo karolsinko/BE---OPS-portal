@@ -27,7 +27,7 @@ public class UlohaService {
     }
 
     @Transactional
-    public List<Uloha> dostanSkriptPodlaId() {
+    public List<Uloha> dostanOtazkuPodlaId() {
         List<Uloha> ret = new LinkedList<>();
         for (UlohaEntity u1 : ulohaRepository.findAll()){
             Uloha u2 = mapUlohy(u1);
