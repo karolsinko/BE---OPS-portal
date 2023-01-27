@@ -2,8 +2,9 @@ package com.example.projekt.Uloha;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/cvicenia")
 public class UlohaController {
 
     private final UlohaService ulohaService;
@@ -17,9 +18,14 @@ public class UlohaController {
         return ulohaService.vytvorUlohu(ulohaEntity);
     }
 
+    @GetMapping("/api/cvicenia")
+    public List<Uloha> dostanOtazku(){
+        return ulohaService.dostanOtazku();
+    }
+
     @GetMapping("api/cvicenia/{id}")
-    public UlohaEntity dostanOtazkuPodlaId(@PathVariable Long id) {
-        return ulohaService.dostanOtazkuPodlaId(id);
+    public Uloha dostanOtazkuCezId(@PathVariable Long id) {
+        return ulohaService.dostanOtazkuCezId(id);
     }
 
     @PutMapping("api/cvicenia/{id}")

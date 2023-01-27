@@ -5,11 +5,13 @@ public class Uloha {
     private Long id;
     private String content;
     private String input;
+    private String solution;
 
-    public Uloha(Long id, String content, String input) {
+    public Uloha(Long id, String content, String input, String solution) {
         this.id = id;
         this.content = content;
         this.input = input;
+        this.solution = solution;
     }
 
     public Long getId() {
@@ -34,5 +36,13 @@ public class Uloha {
 
     public void setInput(String input) {
         this.input = input;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }

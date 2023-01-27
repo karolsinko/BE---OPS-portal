@@ -16,6 +16,9 @@ public class UlohaEntity {
         @Column(name = "input", nullable = false)
         private String input;
 
+        @Column(name = "solution", nullable = false)
+        private String solution;
+
     public Long getId() {
         return id;
     }
@@ -38,5 +41,13 @@ public class UlohaEntity {
 
     public void setInput(String input) {
         this.input = input;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }

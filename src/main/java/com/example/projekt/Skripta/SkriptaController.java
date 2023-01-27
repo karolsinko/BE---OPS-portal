@@ -1,9 +1,11 @@
 package com.example.projekt.Skripta;
 
+import com.example.projekt.Uloha.Uloha;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/skripta")
 public class SkriptaController {
     private final SkriptaService skriptaService;
 
@@ -14,6 +16,11 @@ public class SkriptaController {
     @PostMapping("api/skripta")
     public SkriptaEntity vytvorSkript(@RequestBody SkriptaEntity skriptaEntity) {
         return skriptaService.vytvorSkript(skriptaEntity);
+    }
+
+    @GetMapping("/api/cvicenia")
+    public List<Skripta> dostanSkript(){
+        return skriptaService.dostanSkript();
     }
 
     @GetMapping("api/skripta/{id}")

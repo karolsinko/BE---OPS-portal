@@ -18,23 +18,49 @@ public class SkriptaService {
     }
 
     public static Skripta mapSkripta(SkriptaEntity skriptaEntity){
-        Skripta skripta = new Skripta(skriptaEntity.getId(), skriptaEntity.getContent(), skriptaEntity.getContent1());
+        Skripta skripta = new Skripta(skriptaEntity.getId(), skriptaEntity.getContent(), skriptaEntity.getContent1(), skriptaEntity.getCommands(), skriptaEntity.getExplain());
 
         skripta.setId(skriptaEntity.getId());
         skripta.setContent(skriptaEntity.getContent());
         skripta.setContent1(skriptaEntity.getContent1());
+        skripta.setCommands(skriptaEntity.getCommands());
+        skripta.setExplain(skriptaEntity.getExplain());
+
         return skripta;
 
     }
 
     @Transactional
-    public List<Skripta> dostanSkriptPodlaId() {
+    public List<Skripta> dostanSkript() {
         List<Skripta> ret = new LinkedList<>();
         for (SkriptaEntity s1 : skriptaRepository.findAll()){
             Skripta s2 = mapSkripta(s1);
             ret.add(s2);
         }
         return ret;
+    }
+
+    @Transactional
+    public Long vytvorSkript(Skripta skripta){
+        SkriptaEntity skriptaEntity = new SkriptaEntity();
+
+        skriptaEntity.setContent(skripta.getContent());
+        skriptaEntity.setContent1(skripta.getContent1());
+        skriptaEntity.setCommands(skripta.getCommands());
+        skriptaEntity.setExplain(skripta.getExplain());
+
+        this.skriptaRepository.save(skriptaEntity);
+        return skriptaEntity.getId();
+    }
+
+    @Transactional
+    public Skripta dostanSkriptCezId(Long id) {
+        for (SkriptaEntity s1 : skriptaRepository.findAll()){
+            if (s1.getId() == (id)) {
+                return mapSkripta(s1);
+            }
+        }
+        return null;
     }
 
     public SkriptaEntity vytvorSkript(SkriptaEntity skriptaEntity) {

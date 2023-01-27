@@ -1,11 +1,8 @@
 package com.example.projekt.Quiz;
 
-import com.example.projekt.Skripta.SkriptaEntity;
-import com.example.projekt.Skripta.SkriptaService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/quiz")
 public class QuizController {
     private final QuizService quizService;
 

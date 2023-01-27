@@ -17,23 +17,47 @@ public class UlohaService {
     }
 
     public static Uloha mapUlohy(UlohaEntity ulohaEntity){
-        Uloha uloha = new Uloha(ulohaEntity.getId(), ulohaEntity.getContent(), ulohaEntity.getInput());
+        Uloha uloha = new Uloha(ulohaEntity.getId(), ulohaEntity.getContent(), ulohaEntity.getInput(), ulohaEntity.getSolution());
 
         uloha.setId(ulohaEntity.getId());
         uloha.setContent(ulohaEntity.getContent());
         uloha.setInput(ulohaEntity.getInput());
+        uloha.setSolution(ulohaEntity.getSolution());
+
         return uloha;
 
     }
 
     @Transactional
-    public List<Uloha> dostanOtazkuPodlaId() {
+    public List<Uloha> dostanOtazku() {
         List<Uloha> ret = new LinkedList<>();
         for (UlohaEntity u1 : ulohaRepository.findAll()){
             Uloha u2 = mapUlohy(u1);
             ret.add(u2);
         }
         return ret;
+    }
+
+    @Transactional
+    public Long vytvorUlohu(Uloha uloha){
+        UlohaEntity ulohaEntity = new UlohaEntity();
+
+        ulohaEntity.setContent( uloha.getContent());
+        ulohaEntity.setInput(uloha.getInput());
+        ulohaEntity.setSolution(uloha.getSolution());
+
+        this.ulohaRepository.save(ulohaEntity);
+        return ulohaEntity.getId();
+    }
+
+    @Transactional
+    public Uloha dostanOtazkuCezId(Long id) {
+        for (UlohaEntity u1 : ulohaRepository.findAll()){
+            if (u1.getId() == (id)) {
+                return mapUlohy(u1);
+            }
+        }
+        return null;
     }
 
     public UlohaEntity vytvorUlohu(UlohaEntity ulohaEntity) {

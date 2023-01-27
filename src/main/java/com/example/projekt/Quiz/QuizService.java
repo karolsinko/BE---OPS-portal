@@ -1,5 +1,7 @@
 package com.example.projekt.Quiz;
 
+import com.example.projekt.Skripta.Skripta;
+import com.example.projekt.Skripta.SkriptaEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +40,30 @@ public class QuizService {
             ret.add(q2);
         }
         return ret;
+    }
+
+    @Transactional
+    public Long vytvorQuiz(Quiz quiz){
+        QuizEntity quizEntity = new QuizEntity();
+
+        quizEntity.setSolution(quiz.getSolution());
+        quizEntity.setQuestion(quiz.getQuestion());
+        quizEntity.setOption1(quiz.getOption1());
+        quizEntity.setOption2(quiz.getOption2());
+        quizEntity.setOption3(quiz.getOption3());
+
+        this.quizRepository.save(quizEntity);
+        return quizEntity.getId();
+    }
+
+    @Transactional
+    public Quiz dostanQuizCezId(Long id) {
+        for (QuizEntity q1 : quizRepository.findAll()){
+            if (q1.getId() == (id)) {
+                return mapQuizy(q1);
+            }
+        }
+        return null;
     }
 
     public QuizEntity vytvorQuiz(QuizEntity quizEntity) {
