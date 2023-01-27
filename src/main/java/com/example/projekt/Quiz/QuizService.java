@@ -1,7 +1,5 @@
 package com.example.projekt.Quiz;
 
-import com.example.projekt.Skripta.Skripta;
-import com.example.projekt.Skripta.SkriptaEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +26,7 @@ public class QuizService {
         quiz.setOption1(quizEntity.getOption1());
         quiz.setOption2(quizEntity.getOption2());
         quiz.setOption3(quizEntity.getOption3());
+
         return quiz;
 
     }

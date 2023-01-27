@@ -13,7 +13,7 @@ public class QuizController {
     }
 
     @PostMapping("api/quiz")
-    public QuizEntity vytvorSkript(@RequestBody QuizEntity quizEntity) {
+    public QuizEntity vytvorQuiz(@RequestBody QuizEntity quizEntity) {
         return quizService.vytvorQuiz(quizEntity);
     }
 
@@ -23,17 +23,17 @@ public class QuizController {
     }
 
     @GetMapping("api/quiz/{id}")
-    public QuizEntity dostanSkriptPodlaId(@PathVariable Long id) {
+    public QuizEntity dostanQuizPodlaId(@PathVariable Long id) {
         return quizService.dostanQuizPodlaId(id);
     }
 
     @PutMapping("api/quiz/{id}")
-    public QuizEntity modifikujSkript(@PathVariable Long id, @RequestBody QuizEntity quizEntity) {
+    public QuizEntity modifikujQuiz(@PathVariable Long id, @RequestBody QuizEntity quizEntity) {
         return quizService.modifikujQuiz(id, quizEntity);
     }
 
     @DeleteMapping("api/quiz/{id}")
-    public void vymazSkript(@PathVariable Long id) {
+    public void vymazQuiz(@PathVariable Long id) {
         quizService.vymazQuiz(id);
     }
 }
