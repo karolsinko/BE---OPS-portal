@@ -18,7 +18,7 @@ public class SkriptaController {
         return skriptaService.vytvorSkript(skriptaEntity);
     }
 
-    @GetMapping("/api/cvicenia")
+    @GetMapping("/api/skripta")
     public List<Skripta> dostanSkript(){
         return skriptaService.dostanSkript();
     }

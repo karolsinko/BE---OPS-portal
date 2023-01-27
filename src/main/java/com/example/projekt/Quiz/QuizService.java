@@ -33,7 +33,7 @@ public class QuizService {
     }
 
     @Transactional
-    public List<Quiz> dostanQuizPodlaId() {
+    public List<Quiz> dostanQuiz() {
         List<Quiz> ret = new LinkedList<>();
         for (QuizEntity q1 : quizRepository.findAll()){
             Quiz q2 = mapQuizy(q1);

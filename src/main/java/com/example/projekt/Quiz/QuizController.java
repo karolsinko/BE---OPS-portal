@@ -2,6 +2,8 @@ package com.example.projekt.Quiz;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class QuizController {
     private final QuizService quizService;
@@ -13,6 +15,11 @@ public class QuizController {
     @PostMapping("api/quiz")
     public QuizEntity vytvorSkript(@RequestBody QuizEntity quizEntity) {
         return quizService.vytvorQuiz(quizEntity);
+    }
+
+    @GetMapping("/api/quiz")
+    public List<Quiz> dostanQuiz(){
+        return quizService.dostanQuiz();
     }
 
     @GetMapping("api/quiz/{id}")
