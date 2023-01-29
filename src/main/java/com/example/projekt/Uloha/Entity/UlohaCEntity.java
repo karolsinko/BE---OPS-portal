@@ -1,20 +1,26 @@
-package com.example.projekt.Uloha;
+package com.example.projekt.Uloha.Entity;
 
-public class Uloha {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "cviceniaC")
+public class UlohaCEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
-    private String content;
-    private String input;
-    private String solution;
-    private String language;
 
-    public Uloha(Long id, String content, String input, String solution, String language) {
-        this.id = id;
-        this.content = content;
-        this.input = input;
-        this.solution = solution;
-        this.language = language;
-    }
+    @Column(name = "content", nullable = false)
+    private String content;
+
+    @Column(name = "input", nullable = false)
+    private String input;
+
+    @Column(name = "solution", nullable = false)
+    private String solution;
+
+    @Column(name = "language", nullable = false)
+    private String language;
 
     public Long getId() {
         return id;

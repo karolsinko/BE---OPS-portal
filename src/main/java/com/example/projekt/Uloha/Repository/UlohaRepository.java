@@ -1,5 +1,6 @@
-package com.example.projekt.Uloha;
+package com.example.projekt.Uloha.Repository;
 
+import com.example.projekt.Uloha.Entity.UlohaEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

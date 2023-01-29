@@ -1,5 +1,6 @@
 package com.example.projekt.Uloha;
 
+import com.example.projekt.Uloha.Entity.UlohaEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,18 @@ public class UlohaController {
         this.ulohaService = ulohaService;
     }
 
+    //controller pre ULOHY na jednotlive jazyky
+    @GetMapping("api/cvicenia/{language}/{id}")
+    public Uloha dostanOtazkuCezId(@RequestBody UlohaEntity ulohaEntity, @PathVariable Long id) {
+        return ulohaService.dostanOtazkuCezId(id);
+    }
+
+    @PostMapping("api/cvicenia/{language}")
+    public UlohaEntity vytvorUlohuPreJazyk(@RequestBody UlohaEntity ulohaEntity) {
+        return ulohaService.vytvorUlohu(ulohaEntity);
+    }
+
+    //controller pre ULOHY vseobecne
     @PostMapping("api/cvicenia")
     public UlohaEntity vytvorUlohu(@RequestBody UlohaEntity ulohaEntity) {
         return ulohaService.vytvorUlohu(ulohaEntity);

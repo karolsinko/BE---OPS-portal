@@ -1,5 +1,8 @@
 package com.example.projekt.Uloha;
 
+import com.example.projekt.Uloha.Entity.UlohaEntity;
+import com.example.projekt.Uloha.Repository.UlohaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,17 +15,21 @@ public class UlohaService {
 
     private final UlohaRepository ulohaRepository;
 
+    @Autowired
     public UlohaService(UlohaRepository ulohaRepository) {
         this.ulohaRepository = ulohaRepository;
     }
+    //Service pre ulohy podla jazyka
 
+    //Service pre otazky vseobecne
     public static Uloha mapUlohy(UlohaEntity ulohaEntity){
-        Uloha uloha = new Uloha(ulohaEntity.getId(), ulohaEntity.getContent(), ulohaEntity.getInput(), ulohaEntity.getSolution());
+        Uloha uloha = new Uloha(ulohaEntity.getId(), ulohaEntity.getContent(), ulohaEntity.getInput(), ulohaEntity.getSolution(), ulohaEntity.getLanguage());
 
         uloha.setId(ulohaEntity.getId());
         uloha.setContent(ulohaEntity.getContent());
         uloha.setInput(ulohaEntity.getInput());
         uloha.setSolution(ulohaEntity.getSolution());
+        uloha.setLanguage(ulohaEntity.getLanguage());
 
         return uloha;
 
@@ -45,6 +52,7 @@ public class UlohaService {
         ulohaEntity.setContent( uloha.getContent());
         ulohaEntity.setInput(uloha.getInput());
         ulohaEntity.setSolution(uloha.getSolution());
+        ulohaEntity.setLanguage(uloha.getLanguage());
 
         this.ulohaRepository.save(ulohaEntity);
         return ulohaEntity.getId();
