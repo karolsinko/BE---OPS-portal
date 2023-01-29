@@ -1,6 +1,5 @@
 package com.example.projekt.Uloha.Service;
 
-import com.example.projekt.Uloha.Entity.UlohaEntity;
 import com.example.projekt.Uloha.Entity.UlohaLinuxEntity;
 import com.example.projekt.Uloha.Repository.UlohaLinuxRepository;
 import com.example.projekt.Uloha.Uloha;
