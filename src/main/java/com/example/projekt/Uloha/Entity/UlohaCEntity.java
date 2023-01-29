@@ -61,4 +61,5 @@ public class UlohaCEntity {
     public void setLanguage(String language) {
         this.language = language;
     }
+
 }

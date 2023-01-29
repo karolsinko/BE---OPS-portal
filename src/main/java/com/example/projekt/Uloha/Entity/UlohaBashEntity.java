@@ -61,4 +61,5 @@ public class UlohaBashEntity {
     public void setLanguage(String language) {
         this.language = language;
     }
+
 }

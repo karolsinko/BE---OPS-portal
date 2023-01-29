@@ -1,4 +1,5 @@
 package com.example.projekt.Uloha.Entity;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,8 +24,8 @@ public class UlohaEntity {
         private String language;
 
         public Long getId() {
-            return id;
-        }
+                return id;
+            }
 
         public void setId(Long id) {
             this.id = id;
@@ -61,5 +62,7 @@ public class UlohaEntity {
         public void setLanguage(String language) {
             this.language = language;
         }
+
+
 }
 
