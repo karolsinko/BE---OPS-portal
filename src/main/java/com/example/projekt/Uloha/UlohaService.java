@@ -1,6 +1,9 @@
 package com.example.projekt.Uloha;
 
 import com.example.projekt.Uloha.Entity.UlohaEntity;
+import com.example.projekt.Uloha.Repository.UlohaBashRepository;
+import com.example.projekt.Uloha.Repository.UlohaCRepository;
+import com.example.projekt.Uloha.Repository.UlohaLinuxRepository;
 import com.example.projekt.Uloha.Repository.UlohaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +16,24 @@ import java.util.List;
 @Service
 public class UlohaService {
 
+    @Autowired
     private final UlohaRepository ulohaRepository;
 
     @Autowired
-    public UlohaService(UlohaRepository ulohaRepository) {
+    private final UlohaLinuxRepository ulohaLinuxRepository;
+
+    @Autowired
+    private final UlohaCRepository ulohaCRepository;
+
+    @Autowired
+    private final UlohaBashRepository ulohaBashRepository;
+
+    @Autowired
+    public UlohaService(UlohaRepository ulohaRepository, UlohaLinuxRepository ulohaLinuxRepository, UlohaCRepository ulohaCRepository, UlohaBashRepository ulohaBashRepository) {
         this.ulohaRepository = ulohaRepository;
+        this.ulohaLinuxRepository = ulohaLinuxRepository;
+        this.ulohaCRepository = ulohaCRepository;
+        this.ulohaBashRepository = ulohaBashRepository;
     }
     //Service pre ulohy podla jazyka
 
