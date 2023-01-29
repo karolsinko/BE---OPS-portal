@@ -16,7 +16,7 @@ public class UlohaLinuxController {
         this.ulohaLinuxService = ulohaLinuxService;
     }
 
-    //controller pre ULOHY vseobecne
+    //controller pre LINUX ULOHY vseobecne
     @PostMapping("api/cvicenia/linux")
     public UlohaLinuxEntity vytvorLinuxUlohu(@RequestBody UlohaLinuxEntity ulohaLinuxEntity) {
         return ulohaLinuxService.vytvorLinuxUlohu(ulohaLinuxEntity);
@@ -39,7 +39,7 @@ public class UlohaLinuxController {
 
     @DeleteMapping("api/cvicenia/linux/{id}")
     public void vymazLinuxOtazku(@PathVariable Long id) {
-        ulohaLinuxService.vymazOtazku(id);
+        ulohaLinuxService.vymazCOtazku(id);
     }
 
 }

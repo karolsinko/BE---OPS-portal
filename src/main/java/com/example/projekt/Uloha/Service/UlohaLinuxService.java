@@ -22,7 +22,7 @@ public class UlohaLinuxService {
         this.ulohaLinuxRepository = ulohaLinuxRepository;
     }
 
-    //Service pre otazky vseobecne
+    //Service pre Linux otazky vseobecne
     public static Uloha mapLinuxUlohy(UlohaLinuxEntity ulohaLinuxEntity){
         Uloha uloha = new Uloha(ulohaLinuxEntity.getId(), ulohaLinuxEntity.getContent(), ulohaLinuxEntity.getInput(), ulohaLinuxEntity.getSolution(), ulohaLinuxEntity.getLanguage());
 
@@ -82,7 +82,7 @@ public class UlohaLinuxService {
         return ulohaLinuxRepository.save(ulohaLinuxEntity);
     }
 
-    public void vymazOtazku(Long id) {
+    public void vymazCOtazku(Long id) {
         ulohaLinuxRepository.deleteById(id);
     }
 
