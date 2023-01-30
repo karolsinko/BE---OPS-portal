@@ -3,15 +3,15 @@ package com.example.projekt.Quiz;
 public class Quiz {
 
     private Long id;
-    private String solution;
     private String option1;
     private String option2;
     private String option3;
+    private String option4;
     private String question;
 
-    public Quiz(Long id, String solution, String option1, String option2, String option3, String question) {
+    public Quiz(Long id, String option4, String option1, String option2, String option3, String question) {
         this.id = id;
-        this.solution = solution;
+        this.option4 = option4;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
@@ -24,14 +24,6 @@ public class Quiz {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSolution() {
-        return solution;
-    }
-
-    public void setSolution(String solution) {
-        this.solution = solution;
     }
 
     public String getOption1() {
@@ -64,5 +56,13 @@ public class Quiz {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public String getOption4() {
+        return option4;
+    }
+
+    public void setOption4(String option4) {
+        this.option4 = option4;
     }
 }

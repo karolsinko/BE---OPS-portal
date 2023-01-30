@@ -23,6 +23,9 @@ public class SkriptaEntity {
     @Column(name = "explain", nullable = false)
     private String explain;
 
+    @Column(name = "scripts", nullable = false)
+    private String scripts;
+
     public Long getId() {
         return id;
     }
@@ -61,5 +64,13 @@ public class SkriptaEntity {
 
     public void setExplain(String explain) {
         this.explain = explain;
+    }
+
+    public String getScripts() {
+        return scripts;
+    }
+
+    public void setScripts(String scripts) {
+        this.scripts = scripts;
     }
 }

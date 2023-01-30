@@ -18,13 +18,14 @@ public class SkriptaService {
     }
 
     public static Skripta mapSkripta(SkriptaEntity skriptaEntity){
-        Skripta skripta = new Skripta(skriptaEntity.getId(), skriptaEntity.getContent(), skriptaEntity.getContent1(), skriptaEntity.getCommands(), skriptaEntity.getExplain());
+        Skripta skripta = new Skripta(skriptaEntity.getId(), skriptaEntity.getContent(), skriptaEntity.getContent1(), skriptaEntity.getCommands(), skriptaEntity.getExplain(), skriptaEntity.getScripts());
 
         skripta.setId(skriptaEntity.getId());
         skripta.setContent(skriptaEntity.getContent());
         skripta.setContent1(skriptaEntity.getContent1());
         skripta.setCommands(skriptaEntity.getCommands());
         skripta.setExplain(skriptaEntity.getExplain());
+        skripta.setScripts(skriptaEntity.getScripts());
 
         return skripta;
 
@@ -48,6 +49,7 @@ public class SkriptaService {
         skriptaEntity.setContent1(skripta.getContent1());
         skriptaEntity.setCommands(skripta.getCommands());
         skriptaEntity.setExplain(skripta.getExplain());
+        skriptaEntity.setScripts(skripta.getScripts());
 
         this.skriptaRepository.save(skriptaEntity);
         return skriptaEntity.getId();

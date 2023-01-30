@@ -18,14 +18,14 @@ public class QuizService {
     }
 
     public static Quiz mapQuizy(QuizEntity quizEntity){
-        Quiz quiz = new Quiz(quizEntity.getId(),quizEntity.getSolution(),quizEntity.getQuestion(),quizEntity.getOption1(),quizEntity.getOption2(),quizEntity.getOption3());
+        Quiz quiz = new Quiz(quizEntity.getId(),quizEntity.getOption4(),quizEntity.getQuestion(),quizEntity.getOption1(),quizEntity.getOption2(),quizEntity.getOption3());
 
         quiz.setId(quizEntity.getId());
-        quiz.setSolution(quizEntity.getSolution());
         quiz.setQuestion(quizEntity.getQuestion());
         quiz.setOption1(quizEntity.getOption1());
         quiz.setOption2(quizEntity.getOption2());
         quiz.setOption3(quizEntity.getOption3());
+        quiz.setOption4(quizEntity.getOption4());
 
         return quiz;
 
@@ -45,7 +45,7 @@ public class QuizService {
     public Long vytvorQuiz(Quiz quiz){
         QuizEntity quizEntity = new QuizEntity();
 
-        quizEntity.setSolution(quiz.getSolution());
+        quizEntity.setOption4(quiz.getOption4());
         quizEntity.setQuestion(quiz.getQuestion());
         quizEntity.setOption1(quiz.getOption1());
         quizEntity.setOption2(quiz.getOption2());
@@ -70,7 +70,7 @@ public class QuizService {
     }
 
     public QuizEntity dostanQuizPodlaId(Long id) {
-        return quizRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Skript sa nenasiel"));
+        return quizRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Quiz sa nenasiel"));
     }
 
     public QuizEntity modifikujQuiz(Long id, QuizEntity quizEntity) {
