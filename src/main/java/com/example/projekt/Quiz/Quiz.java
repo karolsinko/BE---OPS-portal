@@ -8,14 +8,16 @@ public class Quiz {
     private String option3;
     private String option4;
     private String question;
+    private String solution;
 
-    public Quiz(Long id, String option4, String option1, String option2, String option3, String question) {
+    public Quiz(Long id, String option4, String option1, String option2, String option3, String question, String solution) {
         this.id = id;
         this.option4 = option4;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.question = question;
+        this.solution = solution;
     }
 
     public Long getId() {
@@ -64,5 +66,13 @@ public class Quiz {
 
     public void setOption4(String option4) {
         this.option4 = option4;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }

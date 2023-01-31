@@ -26,6 +26,9 @@ public class QuizEntity {
     @Column(name = "option4", nullable = false)
     private String option4;
 
+    @Column(name = "solution", nullable = false)
+    private String solution;
+
     public Long getId() {
         return id;
     }
@@ -72,5 +75,13 @@ public class QuizEntity {
 
     public void setOption4(String option4) {
         this.option4 = option4;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }

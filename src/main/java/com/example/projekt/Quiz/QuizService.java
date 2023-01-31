@@ -18,7 +18,7 @@ public class QuizService {
     }
 
     public static Quiz mapQuizy(QuizEntity quizEntity){
-        Quiz quiz = new Quiz(quizEntity.getId(),quizEntity.getOption4(),quizEntity.getQuestion(),quizEntity.getOption1(),quizEntity.getOption2(),quizEntity.getOption3());
+        Quiz quiz = new Quiz(quizEntity.getId(),quizEntity.getOption4(),quizEntity.getQuestion(),quizEntity.getOption1(),quizEntity.getOption2(),quizEntity.getOption3(), quizEntity.getSolution());
 
         quiz.setId(quizEntity.getId());
         quiz.setQuestion(quizEntity.getQuestion());
@@ -26,6 +26,7 @@ public class QuizService {
         quiz.setOption2(quizEntity.getOption2());
         quiz.setOption3(quizEntity.getOption3());
         quiz.setOption4(quizEntity.getOption4());
+        quiz.setSolution(quizEntity.getSolution());
 
         return quiz;
 
@@ -45,11 +46,12 @@ public class QuizService {
     public Long vytvorQuiz(Quiz quiz){
         QuizEntity quizEntity = new QuizEntity();
 
-        quizEntity.setOption4(quiz.getOption4());
         quizEntity.setQuestion(quiz.getQuestion());
         quizEntity.setOption1(quiz.getOption1());
         quizEntity.setOption2(quiz.getOption2());
         quizEntity.setOption3(quiz.getOption3());
+        quizEntity.setOption4(quiz.getOption4());
+        quizEntity.setSolution(quiz.getSolution());
 
         this.quizRepository.save(quizEntity);
         return quizEntity.getId();
