@@ -10,13 +10,13 @@ import java.util.Optional;
 
 @RestController
 public class AdminController {
-
+/*
     private final AdminService adminService;
 
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
-    }
-
+    }*/
+/*
     @PostMapping("/admin")
     public ResponseEntity<AdminEntity> login(@RequestBody Admin admin) {
         Optional<AdminEntity> user = adminService.login(admin.getUsername(), admin.getPassword());
@@ -25,5 +25,5 @@ public class AdminController {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
-
+*/
 }

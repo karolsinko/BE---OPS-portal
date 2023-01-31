@@ -3,14 +3,14 @@ package com.example.projekt.Admin;
 import java.util.Optional;
 
 public class AdminService {
-    private final AdminRepository adminRepository;
+ /*   private final AdminRepository adminRepository;
     //private static final String FIXED_USERNAME = "admin";
     //private static final String FIXED_PASSWORD = "password";
 
     public AdminService(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
-    }
-
+    }*/
+/*
     public Optional<AdminEntity> login(String username, String password) {
         Optional<AdminEntity> admin = adminRepository.findByUsername(username);
         if (admin.isPresent() && admin.get().getPassword().equals(password)) {
@@ -20,5 +20,5 @@ public class AdminService {
             return admin;
         }
         return Optional.empty();
-    }
+    }*/
 }
