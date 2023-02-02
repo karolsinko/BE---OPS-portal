@@ -11,13 +11,13 @@ public class UlohaEntity {
         @Column(name = "id", nullable = false)
         private Long id;
 
-        @Column(name = "content", nullable = false)
+        @Column(name = "content", nullable = false, length = 1024)
         private String content;
 
-        @Column(name = "input", nullable = false)
+        @Column(name = "input", nullable = false, length = 1024)
         private String input;
 
-        @Column(name = "solution", nullable = false)
+        @Column(name = "solution", nullable = false, length = 1024)
         private String solution;
 
         public Long getId() {
