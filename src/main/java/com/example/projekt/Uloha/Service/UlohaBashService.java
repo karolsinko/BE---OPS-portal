@@ -23,13 +23,12 @@ public class UlohaBashService {
 
     //Service pre C otazky vseobecne
     public static Uloha mapBashUlohy(UlohaBashEntity ulohaBashEntity){
-        Uloha uloha = new Uloha(ulohaBashEntity.getId(), ulohaBashEntity.getContent(), ulohaBashEntity.getInput(), ulohaBashEntity.getSolution(), ulohaBashEntity.getLanguage());
+        Uloha uloha = new Uloha(ulohaBashEntity.getId(), ulohaBashEntity.getContent(), ulohaBashEntity.getInput(), ulohaBashEntity.getSolution());
 
         uloha.setId(ulohaBashEntity.getId());
         uloha.setContent(ulohaBashEntity.getContent());
         uloha.setInput(ulohaBashEntity.getInput());
         uloha.setSolution(ulohaBashEntity.getSolution());
-        uloha.setLanguage(ulohaBashEntity.getLanguage());
 
         return uloha;
 
@@ -52,7 +51,6 @@ public class UlohaBashService {
         ulohaBashEntity.setContent( uloha.getContent());
         ulohaBashEntity.setInput(uloha.getInput());
         ulohaBashEntity.setSolution(uloha.getSolution());
-        ulohaBashEntity.setLanguage(uloha.getLanguage());
 
         this.ulohaBashRepository.save(ulohaBashEntity);
         return ulohaBashEntity.getId();

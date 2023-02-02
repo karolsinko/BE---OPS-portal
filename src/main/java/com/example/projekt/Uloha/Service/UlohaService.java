@@ -23,13 +23,12 @@ public class UlohaService {
 
     //Service pre otazky vseobecne
     public static Uloha mapUlohy(UlohaEntity ulohaEntity){
-        Uloha uloha = new Uloha(ulohaEntity.getId(), ulohaEntity.getContent(), ulohaEntity.getInput(), ulohaEntity.getSolution(), ulohaEntity.getLanguage());
+        Uloha uloha = new Uloha(ulohaEntity.getId(), ulohaEntity.getContent(), ulohaEntity.getInput(), ulohaEntity.getSolution());
 
         uloha.setId(ulohaEntity.getId());
         uloha.setContent(ulohaEntity.getContent());
         uloha.setInput(ulohaEntity.getInput());
         uloha.setSolution(ulohaEntity.getSolution());
-        uloha.setLanguage(ulohaEntity.getLanguage());
 
         return uloha;
 
@@ -52,7 +51,6 @@ public class UlohaService {
         ulohaEntity.setContent( uloha.getContent());
         ulohaEntity.setInput(uloha.getInput());
         ulohaEntity.setSolution(uloha.getSolution());
-        ulohaEntity.setLanguage(uloha.getLanguage());
 
         this.ulohaRepository.save(ulohaEntity);
         return ulohaEntity.getId();

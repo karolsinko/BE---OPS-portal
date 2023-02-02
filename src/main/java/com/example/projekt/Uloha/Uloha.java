@@ -6,14 +6,12 @@ public class Uloha {
     private String content;
     private String input;
     private String solution;
-    private String language;
 
-    public Uloha(Long id, String content, String input, String solution, String language) {
+    public Uloha(Long id, String content, String input, String solution) {
         this.id = id;
         this.content = content;
         this.input = input;
         this.solution = solution;
-        this.language = language;
     }
 
     public Long getId() {
@@ -46,13 +44,5 @@ public class Uloha {
 
     public void setSolution(String solution) {
         this.solution = solution;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 }

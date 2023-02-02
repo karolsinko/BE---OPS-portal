@@ -23,13 +23,12 @@ public class UlohaCService {
 
     //Service pre C otazky vseobecne
     public static Uloha mapCUlohy(UlohaCEntity ulohaCEntity){
-        Uloha uloha = new Uloha(ulohaCEntity.getId(), ulohaCEntity.getContent(), ulohaCEntity.getInput(), ulohaCEntity.getSolution(), ulohaCEntity.getLanguage());
+        Uloha uloha = new Uloha(ulohaCEntity.getId(), ulohaCEntity.getContent(), ulohaCEntity.getInput(), ulohaCEntity.getSolution());
 
         uloha.setId(ulohaCEntity.getId());
         uloha.setContent(ulohaCEntity.getContent());
         uloha.setInput(ulohaCEntity.getInput());
         uloha.setSolution(ulohaCEntity.getSolution());
-        uloha.setLanguage(ulohaCEntity.getLanguage());
 
         return uloha;
 
@@ -52,7 +51,6 @@ public class UlohaCService {
         ulohaCEntity.setContent( uloha.getContent());
         ulohaCEntity.setInput(uloha.getInput());
         ulohaCEntity.setSolution(uloha.getSolution());
-        ulohaCEntity.setLanguage(uloha.getLanguage());
 
         this.ulohaCRepository.save(ulohaCEntity);
         return ulohaCEntity.getId();

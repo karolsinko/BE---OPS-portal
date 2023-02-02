@@ -19,9 +19,6 @@ public class UlohaLinuxEntity {
     @Column(name = "solution", nullable = false)
     private String solution;
 
-    @Column(name = "language", nullable = false)
-    private String language;
-
     public Long getId() {
         return id;
     }
@@ -52,14 +49,6 @@ public class UlohaLinuxEntity {
 
     public void setSolution(String solution) {
         this.solution = solution;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 
 }

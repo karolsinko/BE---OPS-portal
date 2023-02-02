@@ -23,13 +23,12 @@ public class UlohaLinuxService {
 
     //Service pre Linux otazky vseobecne
     public static Uloha mapLinuxUlohy(UlohaLinuxEntity ulohaLinuxEntity){
-        Uloha uloha = new Uloha(ulohaLinuxEntity.getId(), ulohaLinuxEntity.getContent(), ulohaLinuxEntity.getInput(), ulohaLinuxEntity.getSolution(), ulohaLinuxEntity.getLanguage());
+        Uloha uloha = new Uloha(ulohaLinuxEntity.getId(), ulohaLinuxEntity.getContent(), ulohaLinuxEntity.getInput(), ulohaLinuxEntity.getSolution());
 
         uloha.setId(ulohaLinuxEntity.getId());
         uloha.setContent(ulohaLinuxEntity.getContent());
         uloha.setInput(ulohaLinuxEntity.getInput());
         uloha.setSolution(ulohaLinuxEntity.getSolution());
-        uloha.setLanguage(ulohaLinuxEntity.getLanguage());
 
         return uloha;
 
@@ -52,7 +51,6 @@ public class UlohaLinuxService {
         ulohaLinuxEntity.setContent( uloha.getContent());
         ulohaLinuxEntity.setInput(uloha.getInput());
         ulohaLinuxEntity.setSolution(uloha.getSolution());
-        ulohaLinuxEntity.setLanguage(uloha.getLanguage());
 
         this.ulohaLinuxRepository.save(ulohaLinuxEntity);
         return ulohaLinuxEntity.getId();
