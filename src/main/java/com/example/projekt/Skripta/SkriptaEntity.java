@@ -11,19 +11,19 @@ public class SkriptaEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "content", nullable = false, length = 1024)
     private String content;
 
-    @Column(name = "content1", nullable = false)
+    @Column(name = "content1", nullable = false, length = 1024)
     private String content1;
 
-    @Column(name = "commands", nullable = false)
+    @Column(name = "commands", nullable = false, length = 1024)
     private String commands;
 
-    @Column(name = "explain", nullable = false)
+    @Column(name = "explain", nullable = false, length = 1024)
     private String explain;
 
-    @Column(name = "scripts", nullable = false)
+    @Column(name = "scripts", nullable = false, length = 1024)
     private String scripts;
 
     public Long getId() {
