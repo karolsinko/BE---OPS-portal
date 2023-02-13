@@ -13,4 +13,4 @@ public interface UlohaCRepository extends CrudRepository<UlohaCEntity, Long> {
     @Override
     List<UlohaCEntity> findAll();
     Optional<UlohaCEntity> findById(long id);
-}
+ }

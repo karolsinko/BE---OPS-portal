@@ -1,5 +1,7 @@
 package com.example.projekt.Uloha;
 
+import javax.persistence.OrderBy;
+
 public class Uloha {
 
     private Long id;

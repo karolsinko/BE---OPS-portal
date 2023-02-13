@@ -5,6 +5,8 @@ import com.example.projekt.Uloha.Uloha;
 import com.example.projekt.Uloha.Service.UlohaService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -24,7 +26,14 @@ public class UlohaController {
 
     @GetMapping("/api/cvicenia")
     public List<Uloha> dostanOtazku(){
-        return ulohaService.dostanOtazku();
+        List<Uloha> entities = ulohaService.dostanOtazku();
+        entities.sort(new Comparator<Uloha>() {
+            @Override
+            public int compare(Uloha entity1, Uloha entity2) {
+                return Integer.compare(Math.toIntExact(entity1.getId()), Math.toIntExact(entity2.getId()));
+            }
+        });
+        return entities;
     }
 
     @GetMapping("api/cvicenia/{id}")

@@ -20,6 +20,7 @@ public class UlohaEntity {
         @Column(name = "solution", nullable = false, length = 1024)
         private String solution;
 
+
         public Long getId() {
                 return id;
             }

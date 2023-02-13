@@ -1,6 +1,5 @@
 package com.example.projekt.Skripta;
 
-import com.example.projekt.Uloha.Uloha;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
