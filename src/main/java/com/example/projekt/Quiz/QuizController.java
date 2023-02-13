@@ -2,6 +2,7 @@ package com.example.projekt.Quiz;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,9 @@ public class QuizController {
 
     @GetMapping("/api/quiz")
     public List<Quiz> dostanQuiz(){
-        return quizService.dostanQuiz();
+        List<Quiz> entities = quizService.dostanQuiz();
+        Collections.shuffle(entities);
+        return entities;
     }
 
     @GetMapping("api/quiz/{id}")

@@ -1,7 +1,9 @@
 package com.example.projekt.Skripta;
 
+import com.example.projekt.Uloha.Uloha;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -19,7 +21,14 @@ public class SkriptaController {
 
     @GetMapping("/api/skripta")
     public List<Skripta> dostanSkript(){
-        return skriptaService.dostanSkript();
+        List<Skripta> entities = skriptaService.dostanSkript();
+        entities.sort(new Comparator<Skripta>() {
+            @Override
+            public int compare(Skripta entity1, Skripta entity2) {
+                return Integer.compare(Math.toIntExact(entity1.getId()), Math.toIntExact(entity2.getId()));
+            }
+        });
+        return entities;
     }
 
     @GetMapping("api/skripta/{id}")
