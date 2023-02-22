@@ -1,6 +1,4 @@
-package com.example.projekt.Uloha;
-
-import javax.persistence.OrderBy;
+package com.example.projekt.Uloha.Model;
 
 public class Uloha {
 

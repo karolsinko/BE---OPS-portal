@@ -1,5 +1,6 @@
-package com.example.projekt.Skripta;
+package com.example.projekt.Skripta.Repository;
 
+import com.example.projekt.Skripta.Entity.SkriptaEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

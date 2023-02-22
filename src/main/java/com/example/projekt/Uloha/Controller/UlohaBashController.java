@@ -2,7 +2,7 @@ package com.example.projekt.Uloha.Controller;
 
 import com.example.projekt.Uloha.Entity.UlohaBashEntity;
 import com.example.projekt.Uloha.Service.UlohaBashService;
-import com.example.projekt.Uloha.Uloha;
+import com.example.projekt.Uloha.Model.Uloha;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;

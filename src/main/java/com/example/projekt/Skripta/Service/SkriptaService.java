@@ -1,5 +1,8 @@
-package com.example.projekt.Skripta;
+package com.example.projekt.Skripta.Service;
 
+import com.example.projekt.Skripta.Entity.SkriptaEntity;
+import com.example.projekt.Skripta.Model.Skripta;
+import com.example.projekt.Skripta.Repository.SkriptaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

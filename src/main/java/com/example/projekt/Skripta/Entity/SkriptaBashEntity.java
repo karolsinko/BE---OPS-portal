@@ -1,22 +1,29 @@
-package com.example.projekt.Skripta;
+package com.example.projekt.Skripta.Entity;
 
-public class Skripta {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "skriptaBash")
+public class SkriptaBashEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
-    private String content;
-    private String content1;
-    private String commands;
-    private String explain;
-    private String scripts;
 
-    public Skripta(Long id, String content, String content1, String commands, String explain, String scripts) {
-        this.id = id;
-        this.content = content;
-        this.content1 = content1;
-        this.commands = commands;
-        this.explain = explain;
-        this.scripts = scripts;
-    }
+    @Column(name = "content", nullable = false, length = 1024)
+    private String content;
+
+    @Column(name = "content1", nullable = false, length = 1024)
+    private String content1;
+
+    @Column(name = "commands", nullable = false, length = 1024)
+    private String commands;
+
+    @Column(name = "explain", nullable = false, length = 1024)
+    private String explain;
+
+    @Column(name = "scripts", nullable = false, length = 1024)
+    private String scripts;
 
     public Long getId() {
         return id;

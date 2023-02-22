@@ -1,6 +1,8 @@
-package com.example.projekt.Skripta;
+package com.example.projekt.Skripta.Controller;
 
-import com.example.projekt.Uloha.Uloha;
+import com.example.projekt.Skripta.Model.Skripta;
+import com.example.projekt.Skripta.Entity.SkriptaEntity;
+import com.example.projekt.Skripta.Service.SkriptaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;

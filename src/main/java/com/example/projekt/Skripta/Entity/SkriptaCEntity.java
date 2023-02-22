@@ -1,11 +1,10 @@
-package com.example.projekt.Skripta;
+package com.example.projekt.Skripta.Entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "skripta")
-public class SkriptaEntity {
-
+@Table(name = "skriptaC")
+public class SkriptaCEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
