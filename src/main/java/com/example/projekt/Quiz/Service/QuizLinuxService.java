@@ -1,5 +1,8 @@
-package com.example.projekt.Quiz;
+package com.example.projekt.Quiz.Service;
 
+import com.example.projekt.Quiz.Entity.QuizLinuxEntity;
+import com.example.projekt.Quiz.Model.Quiz;
+import com.example.projekt.Quiz.Repository.QuizLinuxRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,16 +11,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
-public class QuizService {
+public class QuizLinuxService {
 
 
-    private final QuizRepository quizRepository;
+    private final QuizLinuxRepository quizRepository;
 
-    public QuizService(QuizRepository quizRepository) {
+    public QuizLinuxService(QuizLinuxRepository quizRepository) {
         this.quizRepository = quizRepository;
     }
 
-    public static Quiz mapQuizy(QuizEntity quizEntity){
+    public static Quiz mapQuizy(QuizLinuxEntity quizEntity){
         Quiz quiz = new Quiz(quizEntity.getId(),quizEntity.getOption4(),quizEntity.getQuestion(),quizEntity.getOption1(),quizEntity.getOption2(),quizEntity.getOption3(), quizEntity.getSolution());
 
         quiz.setId(quizEntity.getId());
@@ -35,7 +38,7 @@ public class QuizService {
     @Transactional
     public List<Quiz> dostanQuiz() {
         List<Quiz> ret = new LinkedList<>();
-        for (QuizEntity q1 : quizRepository.findAll()){
+        for (QuizLinuxEntity q1 : quizRepository.findAll()){
             Quiz q2 = mapQuizy(q1);
             ret.add(q2);
         }
@@ -44,7 +47,7 @@ public class QuizService {
 
     @Transactional
     public Long vytvorQuiz(Quiz quiz){
-        QuizEntity quizEntity = new QuizEntity();
+        QuizLinuxEntity quizEntity = new QuizLinuxEntity();
 
         quizEntity.setQuestion(quiz.getQuestion());
         quizEntity.setOption1(quiz.getOption1());
@@ -59,7 +62,7 @@ public class QuizService {
 
     @Transactional
     public Quiz dostanQuizCezId(Long id) {
-        for (QuizEntity q1 : quizRepository.findAll()){
+        for (QuizLinuxEntity q1 : quizRepository.findAll()){
             if (q1.getId() == (id)) {
                 return mapQuizy(q1);
             }
@@ -67,15 +70,15 @@ public class QuizService {
         return null;
     }
 
-    public QuizEntity vytvorQuiz(QuizEntity quizEntity) {
+    public QuizLinuxEntity vytvorQuiz(QuizLinuxEntity quizEntity) {
         return quizRepository.save(quizEntity);
     }
 
-    public QuizEntity dostanQuizPodlaId(Long id) {
+    public QuizLinuxEntity dostanQuizPodlaId(Long id) {
         return quizRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Quiz sa nenasiel"));
     }
 
-    public QuizEntity modifikujQuiz(Long id, QuizEntity quizEntity) {
+    public QuizLinuxEntity modifikujQuiz(Long id, QuizLinuxEntity quizEntity) {
         quizEntity.setId(id);
         return quizRepository.save(quizEntity);
     }

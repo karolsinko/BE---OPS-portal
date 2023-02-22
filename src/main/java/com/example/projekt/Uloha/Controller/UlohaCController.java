@@ -1,8 +1,8 @@
 package com.example.projekt.Uloha.Controller;
 
 import com.example.projekt.Uloha.Entity.UlohaCEntity;
-import com.example.projekt.Uloha.Service.UlohaCService;
 import com.example.projekt.Uloha.Model.Uloha;
+import com.example.projekt.Uloha.Service.UlohaCService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;

@@ -1,8 +1,8 @@
 package com.example.projekt.Uloha.Service;
 
 import com.example.projekt.Uloha.Entity.UlohaCEntity;
-import com.example.projekt.Uloha.Repository.UlohaCRepository;
 import com.example.projekt.Uloha.Model.Uloha;
+import com.example.projekt.Uloha.Repository.UlohaCRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

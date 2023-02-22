@@ -3,12 +3,14 @@ package com.example.projekt.Skripta.Service;
 import com.example.projekt.Skripta.Entity.SkriptaLinuxEntity;
 import com.example.projekt.Skripta.Model.Skripta;
 import com.example.projekt.Skripta.Repository.SkriptaLinuxRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class SkriptaLinuxService {
     private final SkriptaLinuxRepository skriptaLinuxRepository;
 
