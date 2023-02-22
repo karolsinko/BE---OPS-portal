@@ -1,7 +1,6 @@
 package com.example.projekt.Skripta.Service;
 
 import com.example.projekt.Skripta.Entity.SkriptaCEntity;
-import com.example.projekt.Skripta.Entity.SkriptaEntity;
 import com.example.projekt.Skripta.Model.Skripta;
 import com.example.projekt.Skripta.Repository.SkriptaCRepository;
 import org.springframework.stereotype.Service;

@@ -26,7 +26,7 @@ public class UlohaLinuxController {
     @GetMapping("/api/cvicenia/linux")
     public List<Uloha> dostanLinuxOtazku(){
         List<Uloha> entities = ulohaLinuxService.dostanLinuxOtazku();
-        entities.sort(new Comparator<Uloha>() {
+        entities.sort(new Comparator<>() {
             @Override
             public int compare(Uloha entity1, Uloha entity2) {
                 return Integer.compare(Math.toIntExact(entity1.getId()), Math.toIntExact(entity2.getId()));

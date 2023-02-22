@@ -24,7 +24,7 @@ public class SkriptaCController {
     @GetMapping("/api/skripta/c")
     public List<Skripta> dostanSkript(){
         List<Skripta> entities = skriptaCService.dostanSkript();
-        entities.sort(new Comparator<Skripta>() {
+        entities.sort(new Comparator<>() {
             @Override
             public int compare(Skripta entity1, Skripta entity2) {
                 return Integer.compare(Math.toIntExact(entity1.getId()), Math.toIntExact(entity2.getId()));

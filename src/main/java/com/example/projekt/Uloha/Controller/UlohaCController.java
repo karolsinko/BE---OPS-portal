@@ -26,7 +26,7 @@ public class UlohaCController {
     @GetMapping("/api/cvicenia/c")
     public List<Uloha> dostanCOtazku(){
         List<Uloha> entities = ulohaCService.dostanCOtazku();
-        entities.sort(new Comparator<Uloha>() {
+        entities.sort(new Comparator<>() {
             @Override
             public int compare(Uloha entity1, Uloha entity2) {
                 return Integer.compare(Math.toIntExact(entity1.getId()), Math.toIntExact(entity2.getId()));

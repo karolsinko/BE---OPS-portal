@@ -25,7 +25,7 @@ public class UlohaBashController {
     @GetMapping("/api/cvicenia/bash")
     public List<Uloha> dostanBashOtazku(){
         List<Uloha> entities = ulohaBashService.dostanBashOtazku();
-        entities.sort(new Comparator<Uloha>() {
+        entities.sort(new Comparator<>() {
             @Override
             public int compare(Uloha entity1, Uloha entity2) {
                 return Integer.compare(Math.toIntExact(entity1.getId()), Math.toIntExact(entity2.getId()));
