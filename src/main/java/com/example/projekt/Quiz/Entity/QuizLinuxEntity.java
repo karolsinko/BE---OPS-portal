@@ -3,7 +3,7 @@ package com.example.projekt.Quiz.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "quiz")
+@Table(name = "quizLinux")
 public class QuizLinuxEntity {
 
     @Id
