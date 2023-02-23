@@ -1,8 +1,8 @@
-package com.example.projekt.Uloha.Service;
+package com.example.projekt.Cvicenia.Service;
 
-import com.example.projekt.Uloha.Entity.UlohaLinuxEntity;
-import com.example.projekt.Uloha.Model.Uloha;
-import com.example.projekt.Uloha.Repository.UlohaLinuxRepository;
+import com.example.projekt.Cvicenia.Entity.CviceniaLinuxEntity;
+import com.example.projekt.Cvicenia.Model.Cvicenia;
+import com.example.projekt.Cvicenia.Repository.CviceniaLinuxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,18 +12,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
-public class UlohaLinuxService {
+public class CviceniaLinuxService {
 
-    private final UlohaLinuxRepository ulohaLinuxRepository;
+    private final CviceniaLinuxRepository ulohaLinuxRepository;
 
     @Autowired
-    public UlohaLinuxService(UlohaLinuxRepository ulohaLinuxRepository) {
+    public CviceniaLinuxService(CviceniaLinuxRepository ulohaLinuxRepository) {
         this.ulohaLinuxRepository = ulohaLinuxRepository;
     }
 
     //Service pre Linux otazky vseobecne
-    public static Uloha mapLinuxUlohy(UlohaLinuxEntity ulohaLinuxEntity){
-        Uloha uloha = new Uloha(ulohaLinuxEntity.getId(), ulohaLinuxEntity.getContent(), ulohaLinuxEntity.getInput(), ulohaLinuxEntity.getSolution());
+    public static Cvicenia mapLinuxUlohy(CviceniaLinuxEntity ulohaLinuxEntity){
+        Cvicenia uloha = new Cvicenia(ulohaLinuxEntity.getId(), ulohaLinuxEntity.getContent(), ulohaLinuxEntity.getInput(), ulohaLinuxEntity.getSolution());
 
         uloha.setId(ulohaLinuxEntity.getId());
         uloha.setContent(ulohaLinuxEntity.getContent());
@@ -35,18 +35,18 @@ public class UlohaLinuxService {
     }
 
     @Transactional
-    public List<Uloha> dostanLinuxOtazku() {
-        List<Uloha> ret = new LinkedList<>();
-        for (UlohaLinuxEntity u1 : ulohaLinuxRepository.findAll()){
-            Uloha u2 = mapLinuxUlohy(u1);
+    public List<Cvicenia> dostanLinuxOtazku() {
+        List<Cvicenia> ret = new LinkedList<>();
+        for (CviceniaLinuxEntity u1 : ulohaLinuxRepository.findAll()){
+            Cvicenia u2 = mapLinuxUlohy(u1);
             ret.add(u2);
         }
         return ret;
     }
 
     @Transactional
-    public Long vytvorLinuxUlohu(Uloha uloha){
-        UlohaLinuxEntity ulohaLinuxEntity = new UlohaLinuxEntity();
+    public Long vytvorLinuxUlohu(Cvicenia uloha){
+        CviceniaLinuxEntity ulohaLinuxEntity = new CviceniaLinuxEntity();
 
         ulohaLinuxEntity.setContent( uloha.getContent());
         ulohaLinuxEntity.setInput(uloha.getInput());
@@ -57,8 +57,8 @@ public class UlohaLinuxService {
     }
 
     @Transactional
-    public Uloha dostanLinuxOtazkuCezId(Long id) {
-        for (UlohaLinuxEntity u1 : ulohaLinuxRepository.findAll()){
+    public Cvicenia dostanLinuxOtazkuCezId(Long id) {
+        for (CviceniaLinuxEntity u1 : ulohaLinuxRepository.findAll()){
             if (u1.getId() == (id)) {
                 return mapLinuxUlohy(u1);
             }
@@ -66,15 +66,15 @@ public class UlohaLinuxService {
         return null;
     }
 
-    public UlohaLinuxEntity vytvorLinuxUlohu(UlohaLinuxEntity ulohaLinuxEntity) {
+    public CviceniaLinuxEntity vytvorLinuxUlohu(CviceniaLinuxEntity ulohaLinuxEntity) {
         return ulohaLinuxRepository.save(ulohaLinuxEntity);
     }
 
-    public UlohaLinuxEntity dostanLinuxOtazkuPodlaId(Long id) {
+    public CviceniaLinuxEntity dostanLinuxOtazkuPodlaId(Long id) {
         return ulohaLinuxRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Uloha sa nenasla"));
     }
 
-    public UlohaLinuxEntity modifikujLinuxOtazku(Long id, UlohaLinuxEntity ulohaLinuxEntity) {
+    public CviceniaLinuxEntity modifikujLinuxOtazku(Long id, CviceniaLinuxEntity ulohaLinuxEntity) {
         ulohaLinuxEntity.setId(id);
         return ulohaLinuxRepository.save(ulohaLinuxEntity);
     }

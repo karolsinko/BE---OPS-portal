@@ -1,18 +1,23 @@
-package com.example.projekt.Uloha.Model;
+package com.example.projekt.Cvicenia.Entity;
 
-public class Uloha {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "cvicenia_bash")
+public class CviceniaBashEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
-    private String content;
-    private String input;
-    private String solution;
 
-    public Uloha(Long id, String content, String input, String solution) {
-        this.id = id;
-        this.content = content;
-        this.input = input;
-        this.solution = solution;
-    }
+    @Column(name = "content", nullable = false, length = 1024)
+    private String content;
+
+    @Column(name = "input", nullable = false, length = 1024)
+    private String input;
+
+    @Column(name = "solution", nullable = false, length = 1024)
+    private String solution;
 
     public Long getId() {
         return id;
@@ -45,4 +50,5 @@ public class Uloha {
     public void setSolution(String solution) {
         this.solution = solution;
     }
+
 }

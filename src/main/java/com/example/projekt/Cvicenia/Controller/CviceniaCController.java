@@ -1,34 +1,34 @@
-package com.example.projekt.Uloha.Controller;
+package com.example.projekt.Cvicenia.Controller;
 
-import com.example.projekt.Uloha.Entity.UlohaCEntity;
-import com.example.projekt.Uloha.Model.Uloha;
-import com.example.projekt.Uloha.Service.UlohaCService;
+import com.example.projekt.Cvicenia.Entity.CviceniaCEntity;
+import com.example.projekt.Cvicenia.Model.Cvicenia;
+import com.example.projekt.Cvicenia.Service.CviceniaCService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.List;
 
 @RestController
-public class UlohaCController {
+public class CviceniaCController {
 
-    private final UlohaCService ulohaCService;
+    private final CviceniaCService ulohaCService;
 
-    public UlohaCController(UlohaCService ulohaCService) {
+    public CviceniaCController(CviceniaCService ulohaCService) {
         this.ulohaCService = ulohaCService;
     }
 
     //controller pre C ULOHY vseobecne
     @PostMapping("api/cvicenia/c")
-    public UlohaCEntity vytvorCUlohu(@RequestBody UlohaCEntity ulohaCEntity) {
+    public CviceniaCEntity vytvorCUlohu(@RequestBody CviceniaCEntity ulohaCEntity) {
         return ulohaCService.vytvorCUlohu(ulohaCEntity);
     }
 
     @GetMapping("/api/cvicenia/c")
-    public List<Uloha> dostanCOtazku(){
-        List<Uloha> entities = ulohaCService.dostanCOtazku();
+    public List<Cvicenia> dostanCOtazku(){
+        List<Cvicenia> entities = ulohaCService.dostanCOtazku();
         entities.sort(new Comparator<>() {
             @Override
-            public int compare(Uloha entity1, Uloha entity2) {
+            public int compare(Cvicenia entity1, Cvicenia entity2) {
                 return Integer.compare(Math.toIntExact(entity1.getId()), Math.toIntExact(entity2.getId()));
             }
         });
@@ -36,12 +36,12 @@ public class UlohaCController {
     }
 
     @GetMapping("api/cvicenia/c/{id}")
-    public Uloha dostanCOtazkuCezId(@PathVariable Long id) {
+    public Cvicenia dostanCOtazkuCezId(@PathVariable Long id) {
         return ulohaCService.dostanCOtazkuCezId(id);
     }
 
     @PutMapping("api/cvicenia/c/{id}")
-    public UlohaCEntity modifikujCOtazku(@PathVariable Long id, @RequestBody UlohaCEntity ulohaCEntity) {
+    public CviceniaCEntity modifikujCOtazku(@PathVariable Long id, @RequestBody CviceniaCEntity ulohaCEntity) {
         return ulohaCService.modifikujCOtazku(id, ulohaCEntity);
     }
 

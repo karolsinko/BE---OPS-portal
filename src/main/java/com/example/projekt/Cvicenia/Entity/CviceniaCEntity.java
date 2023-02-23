@@ -1,10 +1,10 @@
-package com.example.projekt.Uloha.Entity;
+package com.example.projekt.Cvicenia.Entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cvicenia_c")
-public class UlohaCEntity {
+public class CviceniaCEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @OrderBy("id")

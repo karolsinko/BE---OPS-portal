@@ -1,8 +1,8 @@
-package com.example.projekt.Uloha.Service;
+package com.example.projekt.Cvicenia.Service;
 
-import com.example.projekt.Uloha.Entity.UlohaCEntity;
-import com.example.projekt.Uloha.Model.Uloha;
-import com.example.projekt.Uloha.Repository.UlohaCRepository;
+import com.example.projekt.Cvicenia.Entity.CviceniaCEntity;
+import com.example.projekt.Cvicenia.Model.Cvicenia;
+import com.example.projekt.Cvicenia.Repository.CviceniaCRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,18 +12,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
-public class UlohaCService {
+public class CviceniaCService {
 
-    private final UlohaCRepository ulohaCRepository;
+    private final CviceniaCRepository ulohaCRepository;
 
     @Autowired
-    public UlohaCService(UlohaCRepository ulohaCRepository) {
+    public CviceniaCService(CviceniaCRepository ulohaCRepository) {
         this.ulohaCRepository = ulohaCRepository;
     }
 
     //Service pre C otazky vseobecne
-    public static Uloha mapCUlohy(UlohaCEntity ulohaCEntity){
-        Uloha uloha = new Uloha(ulohaCEntity.getId(), ulohaCEntity.getContent(), ulohaCEntity.getInput(), ulohaCEntity.getSolution());
+    public static Cvicenia mapCUlohy(CviceniaCEntity ulohaCEntity){
+        Cvicenia uloha = new Cvicenia(ulohaCEntity.getId(), ulohaCEntity.getContent(), ulohaCEntity.getInput(), ulohaCEntity.getSolution());
 
         uloha.setId(ulohaCEntity.getId());
         uloha.setContent(ulohaCEntity.getContent());
@@ -35,18 +35,18 @@ public class UlohaCService {
     }
 
     @Transactional
-    public List<Uloha> dostanCOtazku() {
-        List<Uloha> ret = new LinkedList<>();
-        for (UlohaCEntity u1 : ulohaCRepository.findAll()){
-            Uloha u2 = mapCUlohy(u1);
+    public List<Cvicenia> dostanCOtazku() {
+        List<Cvicenia> ret = new LinkedList<>();
+        for (CviceniaCEntity u1 : ulohaCRepository.findAll()){
+            Cvicenia u2 = mapCUlohy(u1);
             ret.add(u2);
         }
         return ret;
     }
 
     @Transactional
-    public Long vytvorCUlohu(Uloha uloha){
-        UlohaCEntity ulohaCEntity = new UlohaCEntity();
+    public Long vytvorCUlohu(Cvicenia uloha){
+        CviceniaCEntity ulohaCEntity = new CviceniaCEntity();
 
         ulohaCEntity.setContent( uloha.getContent());
         ulohaCEntity.setInput(uloha.getInput());
@@ -57,8 +57,8 @@ public class UlohaCService {
     }
 
     @Transactional
-    public Uloha dostanCOtazkuCezId(Long id) {
-        for (UlohaCEntity u1 : ulohaCRepository.findAll()){
+    public Cvicenia dostanCOtazkuCezId(Long id) {
+        for (CviceniaCEntity u1 : ulohaCRepository.findAll()){
             if (u1.getId() == (id)) {
                 return mapCUlohy(u1);
             }
@@ -66,15 +66,15 @@ public class UlohaCService {
         return null;
     }
 
-    public UlohaCEntity vytvorCUlohu(UlohaCEntity ulohaCEntity) {
+    public CviceniaCEntity vytvorCUlohu(CviceniaCEntity ulohaCEntity) {
         return ulohaCRepository.save(ulohaCEntity);
     }
 
-    public UlohaCEntity dostanCOtazkuPodlaId(Long id) {
+    public CviceniaCEntity dostanCOtazkuPodlaId(Long id) {
         return ulohaCRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Uloha sa nenasla"));
     }
 
-    public UlohaCEntity modifikujCOtazku(Long id, UlohaCEntity ulohaCEntity) {
+    public CviceniaCEntity modifikujCOtazku(Long id, CviceniaCEntity ulohaCEntity) {
         ulohaCEntity.setId(id);
         return ulohaCRepository.save(ulohaCEntity);
     }

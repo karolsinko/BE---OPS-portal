@@ -1,10 +1,10 @@
-package com.example.projekt.Uloha.Entity;
+package com.example.projekt.Cvicenia.Entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cvicenia_linux")
-public class UlohaLinuxEntity {
+public class CviceniaLinuxEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

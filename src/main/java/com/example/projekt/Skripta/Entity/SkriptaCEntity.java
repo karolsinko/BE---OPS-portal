@@ -3,7 +3,7 @@ package com.example.projekt.Skripta.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "skriptaC")
+@Table(name = "skripta_C")
 public class SkriptaCEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
