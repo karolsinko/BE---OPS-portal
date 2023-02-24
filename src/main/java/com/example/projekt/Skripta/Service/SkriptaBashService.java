@@ -19,15 +19,14 @@ public class SkriptaBashService {
         this.skriptaBashRepository = skriptaBashRepository;
     }
 
-    public static Skripta mapSkripta(SkriptaBashEntity skriptaBashEntity){
-        Skripta skripta = new Skripta(skriptaBashEntity.getId(), skriptaBashEntity.getContent(), skriptaBashEntity.getContent1(), skriptaBashEntity.getCommands(), skriptaBashEntity.getExplain(), skriptaBashEntity.getScripts());
+    public static Skripta mapSkripta(SkriptaBashEntity skriptaBashEntity) {
+        Skripta skripta = new Skripta(skriptaBashEntity.getId(), skriptaBashEntity.getContent(), skriptaBashEntity.getContent1(), skriptaBashEntity.getCommands(), skriptaBashEntity.getExplain());
 
         skripta.setId(skriptaBashEntity.getId());
         skripta.setContent(skriptaBashEntity.getContent());
         skripta.setContent1(skriptaBashEntity.getContent1());
         skripta.setCommands(skriptaBashEntity.getCommands());
         skripta.setExplain(skriptaBashEntity.getExplain());
-        skripta.setScripts(skriptaBashEntity.getScripts());
 
         return skripta;
 
@@ -36,7 +35,7 @@ public class SkriptaBashService {
     @Transactional
     public List<Skripta> dostanSkript() {
         List<Skripta> ret = new LinkedList<>();
-        for (SkriptaBashEntity s1 : skriptaBashRepository.findAll()){
+        for (SkriptaBashEntity s1 : skriptaBashRepository.findAll()) {
             Skripta s2 = mapSkripta(s1);
             ret.add(s2);
         }
@@ -44,14 +43,13 @@ public class SkriptaBashService {
     }
 
     @Transactional
-    public Long vytvorSkript(Skripta skripta){
+    public Long vytvorSkript(Skripta skripta) {
         SkriptaBashEntity skriptaBashEntity = new SkriptaBashEntity();
 
         skriptaBashEntity.setContent(skripta.getContent());
         skriptaBashEntity.setContent1(skripta.getContent1());
         skriptaBashEntity.setCommands(skripta.getCommands());
         skriptaBashEntity.setExplain(skripta.getExplain());
-        skriptaBashEntity.setScripts(skripta.getScripts());
 
         this.skriptaBashRepository.save(skriptaBashEntity);
         return skriptaBashEntity.getId();
@@ -59,7 +57,7 @@ public class SkriptaBashService {
 
     @Transactional
     public Skripta dostanSkriptCezId(Long id) {
-        for (SkriptaBashEntity s1 : skriptaBashRepository.findAll()){
+        for (SkriptaBashEntity s1 : skriptaBashRepository.findAll()) {
             if (s1.getId() == (id)) {
                 return mapSkripta(s1);
             }

@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CviceniaBashRepository extends CrudRepository<CviceniaBashEntity,Long> {
+public interface CviceniaBashRepository extends CrudRepository<CviceniaBashEntity, Long> {
 
     @Override
     List<CviceniaBashEntity> findAll();
+
     Optional<CviceniaBashEntity> findById(long id);
 }

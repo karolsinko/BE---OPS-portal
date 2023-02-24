@@ -11,5 +11,6 @@ import java.util.Optional;
 public interface QuizBashRepository extends CrudRepository<QuizBashEntity, Long> {
     @Override
     List<QuizBashEntity> findAll();
+
     Optional<QuizBashEntity> findById(long id);
 }

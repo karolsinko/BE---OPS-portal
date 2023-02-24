@@ -7,15 +7,13 @@ public class Skripta {
     private String content1;
     private String commands;
     private String explain;
-    private String scripts;
 
-    public Skripta(Long id, String content, String content1, String commands, String explain, String scripts) {
+    public Skripta(Long id, String content, String content1, String commands, String explain) {
         this.id = id;
         this.content = content;
         this.content1 = content1;
         this.commands = commands;
         this.explain = explain;
-        this.scripts = scripts;
     }
 
     public Long getId() {
@@ -58,11 +56,4 @@ public class Skripta {
         this.explain = explain;
     }
 
-    public String getScripts() {
-        return scripts;
-    }
-
-    public void setScripts(String scripts) {
-        this.scripts = scripts;
-    }
 }

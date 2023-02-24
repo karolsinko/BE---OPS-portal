@@ -12,5 +12,6 @@ public interface SkriptaLinuxRepository extends CrudRepository<SkriptaLinuxEntit
 
     @Override
     List<SkriptaLinuxEntity> findAll();
+
     Optional<SkriptaLinuxEntity> findById(long id);
 }

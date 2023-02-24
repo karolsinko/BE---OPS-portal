@@ -12,14 +12,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 public class DemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
 
     @Configuration
     @EnableWebMvc
-    public static class CorsConfig implements WebMvcConfigurer
-    {
+    public static class CorsConfig implements WebMvcConfigurer {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")

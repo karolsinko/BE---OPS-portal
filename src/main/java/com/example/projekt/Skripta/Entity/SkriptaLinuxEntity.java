@@ -22,9 +22,6 @@ public class SkriptaLinuxEntity {
     @Column(name = "explain", nullable = false, length = 1024)
     private String explain;
 
-    @Column(name = "scripts", nullable = false, length = 1024)
-    private String scripts;
-
     public Long getId() {
         return id;
     }
@@ -65,11 +62,4 @@ public class SkriptaLinuxEntity {
         this.explain = explain;
     }
 
-    public String getScripts() {
-        return scripts;
-    }
-
-    public void setScripts(String scripts) {
-        this.scripts = scripts;
-    }
 }

@@ -12,5 +12,6 @@ public interface CviceniaLinuxRepository extends CrudRepository<CviceniaLinuxEnt
 
     @Override
     List<CviceniaLinuxEntity> findAll();
+
     Optional<CviceniaLinuxEntity> findById(long id);
 }

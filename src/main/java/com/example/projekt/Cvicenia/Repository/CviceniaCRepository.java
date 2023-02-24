@@ -12,5 +12,6 @@ public interface CviceniaCRepository extends CrudRepository<CviceniaCEntity, Lon
 
     @Override
     List<CviceniaCEntity> findAll();
+
     Optional<CviceniaCEntity> findById(long id);
- }
+}

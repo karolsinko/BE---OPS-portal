@@ -12,5 +12,6 @@ public interface QuizLinuxRepository extends CrudRepository<QuizLinuxEntity, Lon
 
     @Override
     List<QuizLinuxEntity> findAll();
+
     Optional<QuizLinuxEntity> findById(long id);
 }

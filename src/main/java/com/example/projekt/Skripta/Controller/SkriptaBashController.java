@@ -22,7 +22,7 @@ public class SkriptaBashController {
     }
 
     @GetMapping("/api/skripta/bash")
-    public List<Skripta> dostanSkript(){
+    public List<Skripta> dostanSkript() {
         List<Skripta> entities = skriptaBashService.dostanSkript();
         entities.sort(new Comparator<>() {
             @Override

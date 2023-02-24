@@ -22,7 +22,7 @@ public class CviceniaCService {
     }
 
     //Service pre C otazky vseobecne
-    public static Cvicenia mapCUlohy(CviceniaCEntity ulohaCEntity){
+    public static Cvicenia mapCUlohy(CviceniaCEntity ulohaCEntity) {
         Cvicenia uloha = new Cvicenia(ulohaCEntity.getId(), ulohaCEntity.getContent(), ulohaCEntity.getInput(), ulohaCEntity.getSolution());
 
         uloha.setId(ulohaCEntity.getId());
@@ -37,7 +37,7 @@ public class CviceniaCService {
     @Transactional
     public List<Cvicenia> dostanCOtazku() {
         List<Cvicenia> ret = new LinkedList<>();
-        for (CviceniaCEntity u1 : ulohaCRepository.findAll()){
+        for (CviceniaCEntity u1 : ulohaCRepository.findAll()) {
             Cvicenia u2 = mapCUlohy(u1);
             ret.add(u2);
         }
@@ -45,10 +45,10 @@ public class CviceniaCService {
     }
 
     @Transactional
-    public Long vytvorCUlohu(Cvicenia uloha){
+    public Long vytvorCUlohu(Cvicenia uloha) {
         CviceniaCEntity ulohaCEntity = new CviceniaCEntity();
 
-        ulohaCEntity.setContent( uloha.getContent());
+        ulohaCEntity.setContent(uloha.getContent());
         ulohaCEntity.setInput(uloha.getInput());
         ulohaCEntity.setSolution(uloha.getSolution());
 
@@ -58,7 +58,7 @@ public class CviceniaCService {
 
     @Transactional
     public Cvicenia dostanCOtazkuCezId(Long id) {
-        for (CviceniaCEntity u1 : ulohaCRepository.findAll()){
+        for (CviceniaCEntity u1 : ulohaCRepository.findAll()) {
             if (u1.getId() == (id)) {
                 return mapCUlohy(u1);
             }

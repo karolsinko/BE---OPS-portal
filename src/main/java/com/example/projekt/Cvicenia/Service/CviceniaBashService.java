@@ -22,7 +22,7 @@ public class CviceniaBashService {
     }
 
     //Service pre C otazky vseobecne
-    public static Cvicenia mapBashUlohy(CviceniaBashEntity ulohaBashEntity){
+    public static Cvicenia mapBashUlohy(CviceniaBashEntity ulohaBashEntity) {
         Cvicenia uloha = new Cvicenia(ulohaBashEntity.getId(), ulohaBashEntity.getContent(), ulohaBashEntity.getInput(), ulohaBashEntity.getSolution());
 
         uloha.setId(ulohaBashEntity.getId());
@@ -37,7 +37,7 @@ public class CviceniaBashService {
     @Transactional
     public List<Cvicenia> dostanBashOtazku() {
         List<Cvicenia> ret = new LinkedList<>();
-        for (CviceniaBashEntity u1 : ulohaBashRepository.findAll()){
+        for (CviceniaBashEntity u1 : ulohaBashRepository.findAll()) {
             Cvicenia u2 = mapBashUlohy(u1);
             ret.add(u2);
         }
@@ -45,10 +45,10 @@ public class CviceniaBashService {
     }
 
     @Transactional
-    public Long vytvorBashUlohu(Cvicenia uloha){
+    public Long vytvorBashUlohu(Cvicenia uloha) {
         CviceniaBashEntity ulohaBashEntity = new CviceniaBashEntity();
 
-        ulohaBashEntity.setContent( uloha.getContent());
+        ulohaBashEntity.setContent(uloha.getContent());
         ulohaBashEntity.setInput(uloha.getInput());
         ulohaBashEntity.setSolution(uloha.getSolution());
 
@@ -58,7 +58,7 @@ public class CviceniaBashService {
 
     @Transactional
     public Cvicenia dostanBashOtazkuCezId(Long id) {
-        for (CviceniaBashEntity u1 : ulohaBashRepository.findAll()){
+        for (CviceniaBashEntity u1 : ulohaBashRepository.findAll()) {
             if (u1.getId() == (id)) {
                 return mapBashUlohy(u1);
             }

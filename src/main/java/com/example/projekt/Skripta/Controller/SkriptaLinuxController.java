@@ -22,7 +22,7 @@ public class SkriptaLinuxController {
     }
 
     @GetMapping("/api/skripta/linux")
-    public List<Skripta> dostanSkript(){
+    public List<Skripta> dostanSkript() {
         List<Skripta> entities = skriptaLinuxService.dostanSkript();
         entities.sort(new Comparator<>() {
             @Override

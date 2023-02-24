@@ -24,7 +24,7 @@ public class CviceniaCController {
     }
 
     @GetMapping("/api/cvicenia/c")
-    public List<Cvicenia> dostanCOtazku(){
+    public List<Cvicenia> dostanCOtazku() {
         List<Cvicenia> entities = ulohaCService.dostanCOtazku();
         entities.sort(new Comparator<>() {
             @Override

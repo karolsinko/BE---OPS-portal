@@ -22,7 +22,7 @@ public class QuizCController {
     }
 
     @GetMapping("/api/quiz/c")
-    public List<Quiz> dostanQuiz(){
+    public List<Quiz> dostanQuiz() {
         List<Quiz> entities = quizCService.dostanQuiz();
         Collections.shuffle(entities);
         return entities;

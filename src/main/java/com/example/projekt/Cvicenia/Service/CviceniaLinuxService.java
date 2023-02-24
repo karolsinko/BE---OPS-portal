@@ -22,7 +22,7 @@ public class CviceniaLinuxService {
     }
 
     //Service pre Linux otazky vseobecne
-    public static Cvicenia mapLinuxUlohy(CviceniaLinuxEntity ulohaLinuxEntity){
+    public static Cvicenia mapLinuxUlohy(CviceniaLinuxEntity ulohaLinuxEntity) {
         Cvicenia uloha = new Cvicenia(ulohaLinuxEntity.getId(), ulohaLinuxEntity.getContent(), ulohaLinuxEntity.getInput(), ulohaLinuxEntity.getSolution());
 
         uloha.setId(ulohaLinuxEntity.getId());
@@ -37,7 +37,7 @@ public class CviceniaLinuxService {
     @Transactional
     public List<Cvicenia> dostanLinuxOtazku() {
         List<Cvicenia> ret = new LinkedList<>();
-        for (CviceniaLinuxEntity u1 : ulohaLinuxRepository.findAll()){
+        for (CviceniaLinuxEntity u1 : ulohaLinuxRepository.findAll()) {
             Cvicenia u2 = mapLinuxUlohy(u1);
             ret.add(u2);
         }
@@ -45,10 +45,10 @@ public class CviceniaLinuxService {
     }
 
     @Transactional
-    public Long vytvorLinuxUlohu(Cvicenia uloha){
+    public Long vytvorLinuxUlohu(Cvicenia uloha) {
         CviceniaLinuxEntity ulohaLinuxEntity = new CviceniaLinuxEntity();
 
-        ulohaLinuxEntity.setContent( uloha.getContent());
+        ulohaLinuxEntity.setContent(uloha.getContent());
         ulohaLinuxEntity.setInput(uloha.getInput());
         ulohaLinuxEntity.setSolution(uloha.getSolution());
 
@@ -58,7 +58,7 @@ public class CviceniaLinuxService {
 
     @Transactional
     public Cvicenia dostanLinuxOtazkuCezId(Long id) {
-        for (CviceniaLinuxEntity u1 : ulohaLinuxRepository.findAll()){
+        for (CviceniaLinuxEntity u1 : ulohaLinuxRepository.findAll()) {
             if (u1.getId() == (id)) {
                 return mapLinuxUlohy(u1);
             }

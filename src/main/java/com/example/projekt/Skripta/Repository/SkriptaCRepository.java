@@ -12,5 +12,6 @@ public interface SkriptaCRepository extends CrudRepository<SkriptaCEntity, Long>
 
     @Override
     List<SkriptaCEntity> findAll();
+
     Optional<SkriptaCEntity> findById(long id);
 }

@@ -22,7 +22,7 @@ public class QuizLinuxController {
     }
 
     @GetMapping("/api/quiz/linux")
-    public List<Quiz> dostanQuiz(){
+    public List<Quiz> dostanQuiz() {
         List<Quiz> entities = quizService.dostanQuiz();
         Collections.shuffle(entities);
         return entities;

@@ -12,5 +12,6 @@ public interface SkriptaBashRepository extends CrudRepository<SkriptaBashEntity,
 
     @Override
     List<SkriptaBashEntity> findAll();
+
     Optional<SkriptaBashEntity> findById(long id);
 }

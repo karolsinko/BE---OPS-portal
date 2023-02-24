@@ -18,8 +18,8 @@ public class QuizBashService {
         this.quizBashRepository = quizBashRepository;
     }
 
-    public static Quiz mapQuizy(QuizBashEntity quizBashEntity){
-        Quiz quiz = new Quiz(quizBashEntity.getId(),quizBashEntity.getOption4(),quizBashEntity.getQuestion(),quizBashEntity.getOption1(),quizBashEntity.getOption2(),quizBashEntity.getOption3(), quizBashEntity.getSolution());
+    public static Quiz mapQuizy(QuizBashEntity quizBashEntity) {
+        Quiz quiz = new Quiz(quizBashEntity.getId(), quizBashEntity.getOption4(), quizBashEntity.getQuestion(), quizBashEntity.getOption1(), quizBashEntity.getOption2(), quizBashEntity.getOption3(), quizBashEntity.getSolution());
 
         quiz.setId(quizBashEntity.getId());
         quiz.setQuestion(quizBashEntity.getQuestion());
@@ -36,7 +36,7 @@ public class QuizBashService {
     @Transactional
     public List<Quiz> dostanQuiz() {
         List<Quiz> ret = new LinkedList<>();
-        for (QuizBashEntity q1 : quizBashRepository.findAll()){
+        for (QuizBashEntity q1 : quizBashRepository.findAll()) {
             Quiz q2 = mapQuizy(q1);
             ret.add(q2);
         }
@@ -44,7 +44,7 @@ public class QuizBashService {
     }
 
     @Transactional
-    public Long vytvorQuiz(Quiz quiz){
+    public Long vytvorQuiz(Quiz quiz) {
         QuizBashEntity quizBashEntity = new QuizBashEntity();
 
         quizBashEntity.setQuestion(quiz.getQuestion());
@@ -60,7 +60,7 @@ public class QuizBashService {
 
     @Transactional
     public Quiz dostanQuizCezId(Long id) {
-        for (QuizBashEntity q1 : quizBashRepository.findAll()){
+        for (QuizBashEntity q1 : quizBashRepository.findAll()) {
             if (q1.getId() == (id)) {
                 return mapQuizy(q1);
             }

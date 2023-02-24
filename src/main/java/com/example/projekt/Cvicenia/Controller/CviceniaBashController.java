@@ -23,7 +23,7 @@ public class CviceniaBashController {
     }
 
     @GetMapping("/api/cvicenia/bash")
-    public List<Cvicenia> dostanBashOtazku(){
+    public List<Cvicenia> dostanBashOtazku() {
         List<Cvicenia> entities = ulohaBashService.dostanBashOtazku();
         entities.sort(new Comparator<>() {
             @Override

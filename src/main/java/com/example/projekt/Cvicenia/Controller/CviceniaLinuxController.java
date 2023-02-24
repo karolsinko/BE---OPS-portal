@@ -24,7 +24,7 @@ public class CviceniaLinuxController {
     }
 
     @GetMapping("/api/cvicenia/linux")
-    public List<Cvicenia> dostanLinuxOtazku(){
+    public List<Cvicenia> dostanLinuxOtazku() {
         List<Cvicenia> entities = cviceniaLinuxService.dostanLinuxOtazku();
         entities.sort(new Comparator<>() {
             @Override

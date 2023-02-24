@@ -18,8 +18,8 @@ public class QuizCService {
         this.quizCRepository = quizCRepository;
     }
 
-    public static Quiz mapQuizy(QuizCEntity quizCEntity){
-        Quiz quiz = new Quiz(quizCEntity.getId(),quizCEntity.getOption4(),quizCEntity.getQuestion(),quizCEntity.getOption1(),quizCEntity.getOption2(),quizCEntity.getOption3(), quizCEntity.getSolution());
+    public static Quiz mapQuizy(QuizCEntity quizCEntity) {
+        Quiz quiz = new Quiz(quizCEntity.getId(), quizCEntity.getOption4(), quizCEntity.getQuestion(), quizCEntity.getOption1(), quizCEntity.getOption2(), quizCEntity.getOption3(), quizCEntity.getSolution());
 
         quiz.setId(quizCEntity.getId());
         quiz.setQuestion(quizCEntity.getQuestion());
@@ -36,7 +36,7 @@ public class QuizCService {
     @Transactional
     public List<Quiz> dostanQuiz() {
         List<Quiz> ret = new LinkedList<>();
-        for (QuizCEntity q1 : quizCRepository.findAll()){
+        for (QuizCEntity q1 : quizCRepository.findAll()) {
             Quiz q2 = mapQuizy(q1);
             ret.add(q2);
         }
@@ -44,7 +44,7 @@ public class QuizCService {
     }
 
     @Transactional
-    public Long vytvorQuiz(Quiz quiz){
+    public Long vytvorQuiz(Quiz quiz) {
         QuizCEntity quizCEntity = new QuizCEntity();
 
         quizCEntity.setQuestion(quiz.getQuestion());
@@ -60,7 +60,7 @@ public class QuizCService {
 
     @Transactional
     public Quiz dostanQuizCezId(Long id) {
-        for (QuizCEntity q1 : quizCRepository.findAll()){
+        for (QuizCEntity q1 : quizCRepository.findAll()) {
             if (q1.getId() == (id)) {
                 return mapQuizy(q1);
             }

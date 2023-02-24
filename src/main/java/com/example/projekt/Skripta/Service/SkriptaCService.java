@@ -19,15 +19,14 @@ public class SkriptaCService {
         this.skriptaCRepository = skriptaCRepository;
     }
 
-    public static Skripta mapSkripta(SkriptaCEntity skriptaCEntity){
-        Skripta skripta = new Skripta(skriptaCEntity.getId(), skriptaCEntity.getContent(), skriptaCEntity.getContent1(), skriptaCEntity.getCommands(), skriptaCEntity.getExplain(), skriptaCEntity.getScripts());
+    public static Skripta mapSkripta(SkriptaCEntity skriptaCEntity) {
+        Skripta skripta = new Skripta(skriptaCEntity.getId(), skriptaCEntity.getContent(), skriptaCEntity.getContent1(), skriptaCEntity.getCommands(), skriptaCEntity.getExplain());
 
         skripta.setId(skriptaCEntity.getId());
         skripta.setContent(skriptaCEntity.getContent());
         skripta.setContent1(skriptaCEntity.getContent1());
         skripta.setCommands(skriptaCEntity.getCommands());
         skripta.setExplain(skriptaCEntity.getExplain());
-        skripta.setScripts(skriptaCEntity.getScripts());
 
         return skripta;
 
@@ -36,7 +35,7 @@ public class SkriptaCService {
     @Transactional
     public List<Skripta> dostanSkript() {
         List<Skripta> ret = new LinkedList<>();
-        for (SkriptaCEntity s1 : skriptaCRepository.findAll()){
+        for (SkriptaCEntity s1 : skriptaCRepository.findAll()) {
             Skripta s2 = mapSkripta(s1);
             ret.add(s2);
         }
@@ -44,14 +43,13 @@ public class SkriptaCService {
     }
 
     @Transactional
-    public Long vytvorSkript(Skripta skripta){
+    public Long vytvorSkript(Skripta skripta) {
         SkriptaCEntity skriptaCEntity = new SkriptaCEntity();
 
         skriptaCEntity.setContent(skripta.getContent());
         skriptaCEntity.setContent1(skripta.getContent1());
         skriptaCEntity.setCommands(skripta.getCommands());
         skriptaCEntity.setExplain(skripta.getExplain());
-        skriptaCEntity.setScripts(skripta.getScripts());
 
         this.skriptaCRepository.save(skriptaCEntity);
         return skriptaCEntity.getId();
@@ -59,7 +57,7 @@ public class SkriptaCService {
 
     @Transactional
     public Skripta dostanSkriptCezId(Long id) {
-        for (SkriptaCEntity s1 : skriptaCRepository.findAll()){
+        for (SkriptaCEntity s1 : skriptaCRepository.findAll()) {
             if (s1.getId() == (id)) {
                 return mapSkripta(s1);
             }
