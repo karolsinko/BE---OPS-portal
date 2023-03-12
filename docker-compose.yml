@@ -18,14 +18,14 @@ services:
       - logs:/var/log/postgresql
 
   backend:
-    image: kajojepan/be_v1
+    image: kajojepan/be_v2
     ports:
       - "8080:8080"
       #depends_on:
       # - opsysdb
 
   frontend:
-    image: kajojepan/fe_v1
+    image: kajojepan/fe_v2
     ports:
       - "8082:8082"
     #links:
